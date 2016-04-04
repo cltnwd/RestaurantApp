@@ -15,7 +15,8 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     EditText usernameInput;
-
+    // THIS IS A GITHUB CHANGE 
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
