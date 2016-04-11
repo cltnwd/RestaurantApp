@@ -15,7 +15,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     EditText usernameInput;
-    // THIS IS A GITHUB CHANGE 
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         // log in as different users
         if (username.equals("customer")) {
             Intent intent = new Intent(this, CustomerMain.class);
+            intent.putExtra("username", username);
             startActivity(intent);
         }
         else if (username.equals("waitstaff")) {

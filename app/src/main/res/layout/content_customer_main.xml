@@ -17,18 +17,30 @@
         android:id="@+id/customerPlaceOrder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Place Order"/>
+        android:text="Place Order"
+        android:onClick="placeOrder"/>
 
     <Button
         android:id="@+id/customerPlayGames"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Play Games"/>
+        android:text="Play Games"
+        android:onClick="playGames"/>
 
     <Button
         android:id="@+id/customerRequestHelp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Help"/>
+        android:text="Help"
+        android:onClick="requestHelp"/>
+
+    <Button
+        android:id="@+id/callAPI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="API Call"
+        android:onClick="callAPI"/>
+
+
 
 </LinearLayout>

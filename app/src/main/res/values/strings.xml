@@ -5,4 +5,6 @@
     <string name="title_activity_waitstaff_main">WaitstaffMain</string>
     <string name="title_activity_kitchen_main">KitchenMain</string>
     <string name="title_activity_manager_main">ManagerMain</string>
+    <string name="title_activity_games_main">GamesMain</string>
+    <string name="title_activity_help_main">HelpMain</string>
 </resources>
