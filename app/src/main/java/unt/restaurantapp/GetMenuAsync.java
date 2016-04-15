@@ -17,13 +17,13 @@ import java.net.URL;
 /**
  * Created by coltonwood on 4/11/16.
  */
-class CallAPIAsync extends AsyncTask<Pair<Context, String>, Void, String> {
-    private String urlstring = "http://10.0.2.2/webservice/comments.php";
+class GetMenuAsync extends AsyncTask<Pair<Context, String>, Void, String> {
+    private String urlstring = "http://10.0.2.2/webservice/viewmenu.php";
     URL url;
-    Context context;
+    ViewMenu caller;
 
-    CallAPIAsync(Context context) {
-        this.context = context;
+    GetMenuAsync(ViewMenu context) {
+        caller = context;
     }
 
     @Override
@@ -68,6 +68,6 @@ class CallAPIAsync extends AsyncTask<Pair<Context, String>, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        caller.parseData(result);
     }
 }

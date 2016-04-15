@@ -39,7 +39,8 @@ public class CustomerMain extends AppCompatActivity {
 //    }
 
     public void placeOrder(View view) {
-        // TODO: backend for placing an order
+        Intent intent = new Intent(this, ViewMenu.class);
+        startActivity(intent);
     }
 
     public void playGames(View view) {
@@ -53,6 +54,6 @@ public class CustomerMain extends AppCompatActivity {
     }
 
     public void callAPI(View view) {
-        new CallAPISync().execute(new Pair<Context, String>(this, username));
+        new CallAPIAsync(this).execute(new Pair<Context, String>(this, username));
     }
 }
