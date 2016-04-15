@@ -5,5 +5,15 @@ package unt.restaurantapp.Classes;
  */
 public class Waiter extends User
 {
+    private Table myTables;
 
+    public Table getMyTables()
+    {
+        return myTables;
+    }
+
+    public void setMyTables(Table myTables)
+    {
+        this.myTables = myTables;
+    }
 }

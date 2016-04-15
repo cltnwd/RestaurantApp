@@ -5,4 +5,10 @@ package unt.restaurantapp.Classes;
  */
 public class Menu
 {
+    private Menu_Item menuList[];
+
+    public Menu_Item[] getMenuList()
+    {
+        return menuList;
+    }
 }

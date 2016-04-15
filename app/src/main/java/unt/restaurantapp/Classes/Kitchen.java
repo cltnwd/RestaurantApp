@@ -5,4 +5,5 @@ package unt.restaurantapp.Classes;
  */
 public class Kitchen extends User
 {
+
 }

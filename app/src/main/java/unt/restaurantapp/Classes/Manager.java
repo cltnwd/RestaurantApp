@@ -5,5 +5,15 @@ package unt.restaurantapp.Classes;
  */
 public class Manager extends User
 {
+    private Table tablesInUse[];
 
+    public Table[] getTablesInUse()
+    {
+        return tablesInUse;
+    }
+
+    public void setTablesInUse(Table[] tablesInUse)
+    {
+        this.tablesInUse = tablesInUse;
+    }
 }
