@@ -8,4 +8,5 @@
     <string name="title_activity_games_main">GamesMain</string>
     <string name="title_activity_help_main">HelpMain</string>
     <string name="title_activity_view_menu">ViewMenu</string>
+    <string name="title_activity_game_links">GameLinks</string>
 </resources>

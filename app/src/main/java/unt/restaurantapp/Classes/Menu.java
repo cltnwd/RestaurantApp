@@ -6,9 +6,15 @@ package unt.restaurantapp.Classes;
 public class Menu
 {
     private Menu_Item menuList[];
+    private Menu_Item mostPopular[];
 
     public Menu_Item[] getMenuList()
     {
         return menuList;
+    }
+
+    public Menu_Item[] getPopular()
+    {
+        return this.mostPopular;
     }
 }
