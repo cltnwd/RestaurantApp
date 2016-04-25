@@ -21,7 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_register_login" />
+    <include layout="@layout/content_login" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/submitlogininfo"
@@ -32,6 +32,6 @@
         android:src="@drawable/ic_navigate_next_white_24dp"
         app:layout_anchorGravity="bottom|right|end"
         android:clickable="true"
-        android:onClick="registerUser"/>
+        android:onClick="loginUser"/>
 
 </android.support.design.widget.CoordinatorLayout>
