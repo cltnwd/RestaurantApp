@@ -58,7 +58,16 @@
             android:name=".ViewMenu"
             android:label="@string/title_activity_view_menu"
             android:parentActivityName=".CustomerMain"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RegisterLoginActivity"
+            android:label="@string/title_activity_register_login"
+            android:parentActivityName=".CustomerMain"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="unt.restaurantapp.CustomerMain" />
+        </activity>
     </application>
 
 </manifest>
