@@ -17,6 +17,7 @@ public class RegisterLoginActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        
     }
 
 }
