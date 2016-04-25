@@ -22,13 +22,17 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="56dp"
-            android:hint="First name..."/>
+            android:hint="First name..."
+            android:nextFocusForward="@+id/lname"
+            android:nextFocusDown="@+id/lname"/>
         <EditText
             android:id="@+id/lname"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="56dp"
-            android:hint="Last name..."/>
+            android:hint="Last name..."
+            android:nextFocusForward="@+id/username"
+            android:nextFocusDown="@+id/username"/>
 
     </LinearLayout>
 
@@ -41,14 +45,18 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="56dp"
-            android:hint="Username..."/>
+            android:hint="Username..."
+            android:nextFocusForward="@+id/password"
+            android:nextFocusDown="@+id/password"/>
         <EditText
             android:id="@+id/password"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="56dp"
             android:password="true"
-            android:hint="Password..."/>
+            android:hint="Password..."
+            android:nextFocusForward="@+id/email"
+            android:nextFocusDown="@+id/email"/>
 
     </LinearLayout>
 

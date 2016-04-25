@@ -45,7 +45,7 @@ class RegisterUserAsync extends AsyncTask<Pair<Context, String>, Void, String> {
         // connect to url
         try {
             System.out.println(urlstring + "?fname=" + fname + "+?lname=" + lname + "+?username=" + username + "+?email=" + email + "+?password=" + password);
-            url = new URL(urlstring + "?fname=" + fname + "+?lname=" + lname + "+?username=" + username + "+?email=" + email + "+?password=" + password);
+            url = new URL(urlstring + "?fname=" + fname + "&lname=" + lname + "&username=" + username.toLowerCase() + "&email=" + email + "&password=" + password);
             System.out.println(url);
             dbConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class RegisterLoginActivity extends AppCompatActivity {
@@ -74,6 +75,22 @@ public class RegisterLoginActivity extends AppCompatActivity {
     }
 
     public void userRegistered(String jsonstring) {
-        Toast.makeText(this, jsonstring, Toast.LENGTH_SHORT).show();
+
+        JSONObject root = null;
+
+        try {
+            root = new JSONObject(jsonstring);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Toast.makeText(this, root.optString("message"), Toast.LENGTH_SHORT).show();
+
+        if (root.optInt("success") == 1) {
+            // TODO: go back to CustomerMain as user
+        }
+
+
+
     }
 }
