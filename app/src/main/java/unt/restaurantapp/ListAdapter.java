@@ -55,11 +55,11 @@ public class ListAdapter extends ArrayAdapter<MenuItem> {
             }
 
             if (tt3 != null) {
-                tt3.setText(Double.toString(p.getPrice()));
+                tt3.setText("$"+String.format("%.2f", p.getPrice()));
             }
 
             if (tt4 != null) {
-                tt4.setText(Integer.toString(p.getCalories()));
+                tt4.setText(Integer.toString(p.getCalories()) + " Calories");
             }
         }
 

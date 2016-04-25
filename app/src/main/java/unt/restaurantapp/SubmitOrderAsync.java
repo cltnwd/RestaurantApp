@@ -1,10 +1,18 @@
 package unt.restaurantapp;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.provider.Settings;
 import android.support.v4.util.Pair;
 import android.util.Log;
-import android.widget.Toast;
+import android.view.Menu;
+
+import com.google.api.client.http.HttpResponse;
+import com.google.api.client.testing.http.apache.MockHttpClient;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -12,30 +20,54 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
+import java.util.List;
 
 /**
  * Created by coltonwood on 4/11/16.
  */
-class CallAPIAsync extends AsyncTask<Pair<Context, String>, Void, String> {
-    private String urlstring = "http://10.0.2.2/webservice/comments.php";
+class SubmitOrderAsync extends AsyncTask<Pair<Context, String>, Void, String> {
+    private String urlstring = "http://10.0.2.2/webservice/submitorder.php";
     URL url;
-    Context context;
+    ViewMenu caller;
+    List<MenuItem> order;
 
-    CallAPIAsync(Context context) {
-        this.context = context;
+    SubmitOrderAsync(ViewMenu context, List<MenuItem> order) {
+        caller = context;
+        this.order = order;
+
     }
 
     @Override
     protected String doInBackground(Pair<Context, String>... params) {
-        StringBuilder result = new StringBuilder();
+
+        // Check for success tag
+        int success;
+        String orderstring = "";
         HttpURLConnection dbConnection = null;
+        StringBuilder result = new StringBuilder();
+
+        // build order string
+        for (int i = 0; i < order.size(); i++) {
+            orderstring += order.get(i).getItemid();
+            orderstring += "+";
+        }
+        if (orderstring.charAt(orderstring.length()-1) == '+') {
+            StringBuilder sb = new StringBuilder(orderstring);
+            sb.deleteCharAt(orderstring.length()-1);
+            orderstring = sb.toString();
+        }
+        System.out.println("order: " + orderstring);
 
 
+        Log.d("request!", "starting");
 
         // connect to url
         try {
-            url = new URL(urlstring);
+            url = new URL(urlstring + "?orderstring=" + orderstring);
+            System.out.println(url);
             dbConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {
             e.printStackTrace();
@@ -57,17 +89,16 @@ class CallAPIAsync extends AsyncTask<Pair<Context, String>, Void, String> {
         } catch (IOException e) {
             e.printStackTrace();
             Log.d("error::", "error building json string");
-        }
-        finally {
+        } finally {
             dbConnection.disconnect();
         }
 
-        // return the json string
         return result.toString();
     }
 
-    @Override
+
+        @Override
     protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        caller.orderSubmitted(result);
     }
 }

@@ -14,16 +14,12 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText usernameInput;
-    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        usernameInput = (EditText)findViewById(R.id.username_input);
 
     }
 
@@ -50,30 +46,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void loginSubmit(View view) {
 
-        // get string from EditText
-        String username = usernameInput.getText().toString();
-        System.out.println(username);
-
         // log in as different users
-        if (username.equals("customer")) {
+        if (view.getId() == R.id.customerloginbtn) {
             Intent intent = new Intent(this, CustomerMain.class);
-            intent.putExtra("username", username);
             startActivity(intent);
         }
-        else if (username.equals("waitstaff")) {
+        else if (view.getId() == R.id.waitstaffloginbtn) {
             Intent intent = new Intent(this, WaitstaffMain.class);
             startActivity(intent);
         }
-        else if (username.equals("kitchen")) {
+        else if (view.getId() == R.id.kitchenloginbtn) {
             Intent intent = new Intent(this, KitchenMain.class);
             startActivity(intent);
         }
-        else if (username.equals("manager")) {
+        else if (view.getId() == R.id.managerloginbtn) {
             Intent intent = new Intent(this, ManagerMain.class);
             startActivity(intent);
         }
         else {
-            Toast.makeText(this, "Invalid username. Try again.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error. Try again.", Toast.LENGTH_SHORT).show();
         }
     }
+
 }

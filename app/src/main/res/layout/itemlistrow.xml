@@ -5,28 +5,47 @@
     android:orientation="horizontal"
     android:padding="8dp">
 
-    <TextView
-        android:id="@+id/itemname"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"/>
 
-    <TextView
-        android:id="@+id/itemdesc"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/itemprice"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/itemname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Item Name"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
 
-    <TextView
-        android:id="@+id/itemcalories"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/itemdesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This is a description. It will probably be a little paragraph or maybe just a few sentences. It could span multiple lines."
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/itemcalories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="300 Calories"
+            android:alpha=".5"
+            android:textStyle="italic"
+            android:layout_marginBottom="4dp"
+            android:layout_marginStart="8dp"/>
+
+        <TextView
+            android:id="@+id/itemprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$5.50"
+            android:layout_marginStart="8dp"/>
+
+    </LinearLayout>
+
 
 </LinearLayout>

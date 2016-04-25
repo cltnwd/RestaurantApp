@@ -2,6 +2,7 @@ package unt.restaurantapp;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -28,11 +29,16 @@ import java.util.Objects;
 
 public class ViewMenu extends AppCompatActivity {
 
-    ListView entreelistview, appetizerlistview, drinklistview, dessertlistview;
+    ListView menulistview;
     TextView orderTotalView;
     CardView expandableCardView;
     float ordertotal=0;
     ArrayList<MenuItem> currentOrder;
+
+    List<MenuItem> entreelist = new ArrayList<>();
+    List<MenuItem> appetizerlist = new ArrayList<>();
+    List<MenuItem> drinklist = new ArrayList<>();
+    List<MenuItem> dessertlist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,16 +47,14 @@ public class ViewMenu extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Menu");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         currentOrder = new ArrayList<>();
 
         orderTotalView = (TextView)findViewById(R.id.orderTotal);
         expandableCardView = (CardView)findViewById(R.id.expandableOrder);
 
-        entreelistview = (ListView)findViewById(R.id.entreelist);
-//        appetizerlistview = (ListView)findViewById(R.id.appetizerlist);
-//        drinklistview = (ListView)findViewById(R.id.drinklist);
-//        dessertlistview = (ListView)findViewById(R.id.dessertlist);
+        menulistview = (ListView)findViewById(R.id.menulistview);
 
         // pull current menu from database
         new GetMenuAsync(this).execute();
@@ -105,12 +109,6 @@ public class ViewMenu extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public void setUpListView(JSONArray jsonitems) {
 
-        // create list of food categories
-        final List<MenuItem> entreelist = new ArrayList<>();
-        List<MenuItem> appetizerlist = new ArrayList<>();
-        List<MenuItem> drinklist = new ArrayList<>();
-        List<MenuItem> dessertlist = new ArrayList<>();
-
         // entrees
         for (int i=0; i<jsonitems.length(); i++) {
 
@@ -124,6 +122,7 @@ public class ViewMenu extends AppCompatActivity {
                     String description = jsonitems.getJSONObject(i).optString("descr");
                     int calories = jsonitems.getJSONObject(i).optInt("numcalories");
                     double price = jsonitems.getJSONObject(i).optDouble("price");
+                    int itemid = jsonitems.getJSONObject(i).optInt("id");
 
 
                     // create menu item
@@ -132,6 +131,7 @@ public class ViewMenu extends AppCompatActivity {
                     item.setDescription(description);
                     item.setCalories(calories);
                     item.setPrice(price);
+                    item.setItemid(itemid);
 
                     // show item if it is available
                     if (jsonitems.getJSONObject(0).optInt("isavailable") == 1) {
@@ -157,6 +157,7 @@ public class ViewMenu extends AppCompatActivity {
                     String description = jsonitems.getJSONObject(i).optString("description");
                     int calories = jsonitems.getJSONObject(i).optInt("numcalories");
                     double price = jsonitems.getJSONObject(i).optDouble("price");
+                    int itemid = jsonitems.getJSONObject(i).optInt("id");
 
 
                     // create menu item
@@ -165,10 +166,11 @@ public class ViewMenu extends AppCompatActivity {
                     item.setDescription(description);
                     item.setCalories(calories);
                     item.setPrice(price);
+                    item.setItemid(itemid);
 
                     // show item if it is available
                     if (jsonitems.getJSONObject(0).optInt("isavailable") == 1) {
-                        entreelist.add(item);
+                        appetizerlist.add(item);
                     }
 
                 }
@@ -189,6 +191,7 @@ public class ViewMenu extends AppCompatActivity {
                     String description = jsonitems.getJSONObject(i).optString("description");
                     int calories = jsonitems.getJSONObject(i).optInt("numcalories");
                     double price = jsonitems.getJSONObject(i).optDouble("price");
+                    int itemid = jsonitems.getJSONObject(i).optInt("id");
 
 
                     // create menu item
@@ -197,10 +200,11 @@ public class ViewMenu extends AppCompatActivity {
                     item.setDescription(description);
                     item.setCalories(calories);
                     item.setPrice(price);
+                    item.setItemid(itemid);
 
                     // show item if it is available
                     if (jsonitems.getJSONObject(0).optInt("isavailable") == 1) {
-                        entreelist.add(item);
+                        dessertlist.add(item);
                     }
 
 
@@ -222,6 +226,7 @@ public class ViewMenu extends AppCompatActivity {
                     String description = jsonitems.getJSONObject(i).optString("description");
                     int calories = jsonitems.getJSONObject(i).optInt("numcalories");
                     double price = jsonitems.getJSONObject(i).optDouble("price");
+                    int itemid = jsonitems.getJSONObject(i).optInt("id");
 
 
                     // create menu item
@@ -230,10 +235,11 @@ public class ViewMenu extends AppCompatActivity {
                     item.setDescription(description);
                     item.setCalories(calories);
                     item.setPrice(price);
+                    item.setItemid(itemid);
 
                     // show item if it is available
                     if (jsonitems.getJSONObject(0).optInt("isavailable") == 1) {
-                        entreelist.add(item);
+                        drinklist.add(item);
                     }
 
                 }
@@ -245,8 +251,8 @@ public class ViewMenu extends AppCompatActivity {
 //        ListAdapter customAdapter1 = new ListAdapter(this, R.layout.itemlistrow, appetizerlist);
 //        appetizerlistview.setAdapter(customAdapter1);
 
-        ListAdapter customAdapter2 = new ListAdapter(this, R.layout.itemlistrow, entreelist);
-        entreelistview.setAdapter(customAdapter2);
+        ListAdapter customAdapter2 = new ListAdapter(this, R.layout.itemlistrow, appetizerlist);
+        menulistview.setAdapter(customAdapter2);
 //
 //        ListAdapter customAdapter3 = new ListAdapter(this, R.layout.itemlistrow, dessertlist);
 //        dessertlistview.setAdapter(customAdapter3);
@@ -255,7 +261,7 @@ public class ViewMenu extends AppCompatActivity {
 //        drinklistview.setAdapter(customAdapter4);
 
 
-        entreelistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        menulistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -281,8 +287,67 @@ public class ViewMenu extends AppCompatActivity {
         }
 
         else {
-            Toast.makeText(getBaseContext(), "Submitting order...", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getBaseContext(), "Submitting order...", Toast.LENGTH_SHORT).show();
+
+            // submit the order in background
+            new SubmitOrderAsync(this, currentOrder).execute();
         }
 
     }
+
+    public void orderSubmitted(String jsonString) {
+
+        // create json object from results
+        JSONObject jsonroot;
+        JSONArray jsonitems = null;
+        try {
+            jsonroot = new JSONObject(jsonString);
+
+            if (jsonroot.optInt("success") == 1) {
+                Toast.makeText(getBaseContext(), "Order submitted!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ViewMenu.this, CustomerMain.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+
+            else {
+                Toast.makeText(getBaseContext(), "Please try again", Toast.LENGTH_SHORT).show();
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.d("logcat", "error converting string to json");
+        }
+
+
+    }
+
+    public void updateList(View view) {
+
+        ListAdapter customAdapter;
+
+        if (view.getId() == R.id.appetizerslistbtn) {
+            customAdapter = new ListAdapter(this, R.layout.itemlistrow, appetizerlist);
+            menulistview.setAdapter(customAdapter);
+        }
+
+        else if (view.getId() == R.id.entreeslistbtn) {
+            customAdapter = new ListAdapter(this, R.layout.itemlistrow, entreelist);
+            menulistview.setAdapter(customAdapter);
+        }
+
+        else if (view.getId() == R.id.drinkslistbtn) {
+            customAdapter = new ListAdapter(this, R.layout.itemlistrow, drinklist);
+            menulistview.setAdapter(customAdapter);
+        }
+
+        else if (view.getId() == R.id.dessertslistbtn) {
+            customAdapter = new ListAdapter(this, R.layout.itemlistrow, dessertlist);
+            menulistview.setAdapter(customAdapter);
+        }
+
+
+
+    }
+
 }

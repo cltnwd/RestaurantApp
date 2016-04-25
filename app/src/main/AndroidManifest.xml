@@ -57,6 +57,7 @@
         <activity
             android:name=".ViewMenu"
             android:label="@string/title_activity_view_menu"
+            android:parentActivityName=".CustomerMain"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
