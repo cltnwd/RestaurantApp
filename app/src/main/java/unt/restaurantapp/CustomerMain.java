@@ -47,7 +47,7 @@ public class CustomerMain extends AppCompatActivity {
     }
 
     public void registerLogin(View view) {
-        Intent intent = new Intent(this, HelpMain.class);
+        Intent intent = new Intent(this, RegisterLoginActivity.class);
         startActivity(intent);
     }
 

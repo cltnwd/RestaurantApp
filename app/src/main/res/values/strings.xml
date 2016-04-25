@@ -9,4 +9,5 @@
     <string name="title_activity_help_main">HelpMain</string>
     <string name="title_activity_view_menu">ViewMenu</string>
     <string name="title_activity_register_login">Register New User</string>
+    <string name="already_logged_in"><u>Already registered? Tap here to log in!</u></string>
 </resources>
