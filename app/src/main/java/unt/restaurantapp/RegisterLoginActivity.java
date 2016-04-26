@@ -1,6 +1,7 @@
 package unt.restaurantapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,7 +16,9 @@ import org.json.JSONObject;
 
 public class RegisterLoginActivity extends AppCompatActivity {
 
+    String MY_PREFS_NAME = "restaurant_app_shared_preferences";
     EditText usernameET, passwordET, emailET, fnameET, lnameET;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +90,17 @@ public class RegisterLoginActivity extends AppCompatActivity {
         Toast.makeText(this, root.optString("message"), Toast.LENGTH_SHORT).show();
 
         if (root.optInt("success") == 1) {
-            // TODO: go back to CustomerMain as user
+
+            // log user in, store fname
+            SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+            editor.putString("username", fnameET.getText().toString());
+            editor.putBoolean("isLoggedIn", true);
+            editor.apply();
+
+            // go back to customer main
+            Intent intent = new Intent(this, CustomerMain.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         }
 
 

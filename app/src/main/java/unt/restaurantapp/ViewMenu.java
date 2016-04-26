@@ -40,6 +40,7 @@ public class ViewMenu extends AppCompatActivity {
     List<MenuItem> appetizerlist = new ArrayList<>();
     List<MenuItem> drinklist = new ArrayList<>();
     List<MenuItem> dessertlist = new ArrayList<>();
+    String currentList = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -254,6 +255,7 @@ public class ViewMenu extends AppCompatActivity {
 
         ListAdapter customAdapter2 = new ListAdapter(this, R.layout.itemlistrow, appetizerlist);
         menulistview.setAdapter(customAdapter2);
+        currentList = "appetizers";
 //
 //        ListAdapter customAdapter3 = new ListAdapter(this, R.layout.itemlistrow, dessertlist);
 //        dessertlistview.setAdapter(customAdapter3);
@@ -266,14 +268,49 @@ public class ViewMenu extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                // adds tapped item to your order
-                currentOrder.add( entreelist.get(position) );
+                if (currentList.equals("appetizers")) {
+                    // adds tapped item to your order
+                    currentOrder.add(appetizerlist.get(position));
 
-                // update price
-                ordertotal += entreelist.get(position).getPrice();
+                    // update price
+                    ordertotal += appetizerlist.get(position).getPrice();
 
-                // update order total
-                orderTotalView.setText("$"+String.format("%.2f", ordertotal));
+                    // update order total
+                    orderTotalView.setText("$" + String.format("%.2f", ordertotal));
+                }
+
+                else if (currentList.equals("entrees")) {
+                    // adds tapped item to your order
+                    currentOrder.add(entreelist.get(position));
+
+                    // update price
+                    ordertotal += entreelist.get(position).getPrice();
+
+                    // update order total
+                    orderTotalView.setText("$" + String.format("%.2f", ordertotal));
+                }
+
+                 else if (currentList.equals("drinks")) {
+                    // adds tapped item to your order
+                    currentOrder.add(drinklist.get(position));
+
+                    // update price
+                    ordertotal += drinklist.get(position).getPrice();
+
+                    // update order total
+                    orderTotalView.setText("$" + String.format("%.2f", ordertotal));
+                }
+
+                else if (currentList.equals("desserts")) {
+                    // adds tapped item to your order
+                    currentOrder.add(dessertlist.get(position));
+
+                    // update price
+                    ordertotal += dessertlist.get(position).getPrice();
+
+                    // update order total
+                    orderTotalView.setText("$" + String.format("%.2f", ordertotal));
+                }
 
 
             }
@@ -288,7 +325,6 @@ public class ViewMenu extends AppCompatActivity {
         }
 
         else {
-            //Toast.makeText(getBaseContext(), "Submitting order...", Toast.LENGTH_SHORT).show();
 
             // submit the order in background
             new SubmitOrderAsync(this, currentOrder).execute();
@@ -330,21 +366,29 @@ public class ViewMenu extends AppCompatActivity {
         if (view.getId() == R.id.appetizerslistbtn) {
             customAdapter = new ListAdapter(this, R.layout.itemlistrow, appetizerlist);
             menulistview.setAdapter(customAdapter);
+            currentList = "appetizers";
+
         }
 
         else if (view.getId() == R.id.entreeslistbtn) {
             customAdapter = new ListAdapter(this, R.layout.itemlistrow, entreelist);
             menulistview.setAdapter(customAdapter);
+            currentList = "entrees";
+
         }
 
         else if (view.getId() == R.id.drinkslistbtn) {
             customAdapter = new ListAdapter(this, R.layout.itemlistrow, drinklist);
             menulistview.setAdapter(customAdapter);
+            currentList = "drinks";
+
         }
 
         else if (view.getId() == R.id.dessertslistbtn) {
             customAdapter = new ListAdapter(this, R.layout.itemlistrow, dessertlist);
             menulistview.setAdapter(customAdapter);
+            currentList = "desserts";
+
         }
 
     }
