@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="unt.restaurantapp">
+<manifest package="unt.restaurantapp"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -76,6 +76,16 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="unt.restaurantapp.CustomerMain" />
+        </activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".GameLinks"
+            android:label="@string/title_activity_game_links"
+            android:parentActivityName=".CustomerMain"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="unt.restaurantapp.CustomerMain"/>
         </activity>
     </application>
 

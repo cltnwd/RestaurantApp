@@ -21,6 +21,7 @@ import android.widget.Toast;
 public class CustomerMain extends AppCompatActivity {
 
     String username;
+    private int timesPlayed = 0;
     String MY_PREFS_NAME = "restaurant_app_shared_preferences";
     private Menu menu;
     Button loginButton;
@@ -65,7 +66,16 @@ public class CustomerMain extends AppCompatActivity {
     }
 
     public void playGames(View view) {
-        Intent intent = new Intent(this, GamesMain.class);
+        Intent intent;
+        if(timesPlayed < 2)
+        {
+            intent = new Intent(this, GamesMain.class);
+            timesPlayed++;
+        }
+        else
+        {
+            intent = new Intent(this, GameLinks.class);
+        }
         startActivity(intent);
     }
 
