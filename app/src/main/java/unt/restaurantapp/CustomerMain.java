@@ -111,7 +111,7 @@ public class CustomerMain extends AppCompatActivity {
 
                 // make sure log out was successful
                 if (prefs.getString("username", null) == null) {
-                    Toast.makeText(this, "Logged out!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Goodbye!", Toast.LENGTH_SHORT).show();
                     getSupportActionBar().setTitle("Welcome!");
                     loginButton.setEnabled(true);
                 }
