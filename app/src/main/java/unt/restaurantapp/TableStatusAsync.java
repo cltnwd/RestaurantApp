@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v4.util.Pair;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -12,25 +13,21 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
 
 /**
  * Created by coltonwood on 4/11/16.
  */
-class RegisterUserAsync extends AsyncTask<Pair<Context, String>, Void, String> {
-    String fname, lname, username, email, password;
+class TableStatusAsync extends AsyncTask<Pair<Context, String>, Void, String> {
+    String status;
+    int tableid;
 
-    private String urlstring = "http://10.0.2.2/webservice/register.php";
+    private String urlstring = "http://10.0.2.2/webservice/changetablestatus.php";
     URL url;
     RegisterLoginActivity caller;
 
-    RegisterUserAsync(RegisterLoginActivity context, String fname, String lname, String username, String email, String password) {
-        caller = context;
-        this.fname = fname;
-        this.lname = lname;
-        this.username = username;
-        this.email = email;
-        this.password = password;
+    TableStatusAsync(int tableid, String status) {
+        this.tableid = tableid;
+        this.status = status;
     }
 
     @Override
@@ -44,7 +41,8 @@ class RegisterUserAsync extends AsyncTask<Pair<Context, String>, Void, String> {
 
         // connect to url
         try {
-            url = new URL(urlstring + "?fname=" + fname + "&lname=" + lname + "&username=" + username.toLowerCase() + "&email=" + email + "&password=" + password);
+            System.out.println(urlstring + "?tableid=" + tableid + "+&status=" + status);
+            url = new URL(urlstring + "?tableid=" + tableid + "+&status=" + status);
             System.out.println(url);
             dbConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {
@@ -77,6 +75,7 @@ class RegisterUserAsync extends AsyncTask<Pair<Context, String>, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        caller.userRegistered(result);
+        System.out.println(result);
+
     }
 }

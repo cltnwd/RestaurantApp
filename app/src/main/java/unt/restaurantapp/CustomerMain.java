@@ -25,6 +25,7 @@ public class CustomerMain extends AppCompatActivity {
     String MY_PREFS_NAME = "restaurant_app_shared_preferences";
     private Menu menu;
     Button loginButton;
+    int TABLE_ID = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,12 +117,15 @@ public class CustomerMain extends AppCompatActivity {
                     loginButton.setEnabled(true);
                 }
             }
+        }
 
-
+        if (item.getItemId() == R.id.action_refill) {
+            new TableStatusAsync(TABLE_ID, "refill").execute();
 
         }
 
 
         return super.onOptionsItemSelected(item);
     }
+
 }
