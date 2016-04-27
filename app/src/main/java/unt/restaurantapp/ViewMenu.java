@@ -111,6 +111,10 @@ public class ViewMenu extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public void setUpListView(JSONArray jsonitems) {
 
+        if (jsonitems == null) {
+            return;
+        }
+
         // entrees
         for (int i=0; i<jsonitems.length(); i++) {
 

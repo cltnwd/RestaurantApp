@@ -83,25 +83,27 @@ public class RegisterLoginActivity extends AppCompatActivity {
 
         try {
             root = new JSONObject(jsonstring);
+            Toast.makeText(this, root.optString("message"), Toast.LENGTH_SHORT).show();
+
+            if (root.optInt("success") == 1) {
+
+                // log user in, store fname
+                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                editor.putString("username", fnameET.getText().toString());
+                editor.putBoolean("isLoggedIn", true);
+                editor.apply();
+
+                // go back to customer main
+                Intent intent = new Intent(this, CustomerMain.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
         } catch (JSONException e) {
             e.printStackTrace();
+            Toast.makeText(this, "Unable to connect to database. Please try again.", Toast.LENGTH_SHORT).show();
         }
 
-        Toast.makeText(this, root.optString("message"), Toast.LENGTH_SHORT).show();
 
-        if (root.optInt("success") == 1) {
-
-            // log user in, store fname
-            SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-            editor.putString("username", fnameET.getText().toString());
-            editor.putBoolean("isLoggedIn", true);
-            editor.apply();
-
-            // go back to customer main
-            Intent intent = new Intent(this, CustomerMain.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-        }
 
 
 
