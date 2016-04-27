@@ -3,6 +3,7 @@ package unt.restaurantapp;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -83,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
 
         } catch (JSONException e) {
             e.printStackTrace();
+            Toast.makeText(this, "Unable to connect to database. Please try again.", Toast.LENGTH_SHORT).show();
         }
 
 
