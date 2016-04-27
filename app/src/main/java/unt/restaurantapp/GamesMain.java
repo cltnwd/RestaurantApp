@@ -15,6 +15,7 @@ public class GamesMain extends AppCompatActivity {
     Random rand = new Random();
     private int win1 = rand.nextInt(10) + 1;
     private int win2 = win1;
+    private boolean clicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,11 @@ public class GamesMain extends AppCompatActivity {
     public void buttonOneClick(View view)
     {
         Button button = (Button)view;
-        if((win1 == 1) || (win2 == 1))
+        if(clicked == true)
+        {
+            button.setText("NOPE!!!");
+        }
+        else if((win1 == 1) || (win2 == 1))
         {
             button.setText("WIN!!");
         }
@@ -45,12 +50,17 @@ public class GamesMain extends AppCompatActivity {
         {
             button.setText("LOSE!!");
         }
+        clicked = true;
     }
 
     public void buttonTwoClick(View view)
     {
         Button button = (Button)view;
-        if((win1 == 2) || (win2 == 2))
+        if(clicked == true)
+        {
+            button.setText("NOPE!!!");
+        }
+        else if((win1 == 2) || (win2 == 2))
         {
             button.setText("WIN!!");
         }
@@ -58,12 +68,17 @@ public class GamesMain extends AppCompatActivity {
         {
             button.setText("LOSE!!");
         }
+        clicked = true;
     }
 
     public void buttonThreeClick(View view)
     {
         Button button = (Button)view;
-        if((win1 == 3) || (win2 == 3))
+        if(clicked == true)
+        {
+            button.setText("NOPE!!!");
+        }
+        else if((win1 == 3) || (win2 == 3))
         {
             button.setText("WIN!!");
         }
@@ -71,12 +86,17 @@ public class GamesMain extends AppCompatActivity {
         {
             button.setText("LOSE!!");
         }
+        clicked = true;
     }
 
     public void buttonFourClick(View view)
     {
         Button button = (Button)view;
-        if((win1 == 4) || (win2 == 4))
+        if(clicked == true)
+        {
+            button.setText("NOPE!!!");
+        }
+        else if((win1 == 4) || (win2 == 4))
         {
             button.setText("WIN!!");
         }
@@ -84,12 +104,17 @@ public class GamesMain extends AppCompatActivity {
         {
             button.setText("LOSE!!");
         }
+        clicked = true;
     }
 
     public void buttonFiveClick(View view)
     {
         Button button = (Button)view;
-        if((win1 == 5) || (win2 == 5))
+        if(clicked == true)
+        {
+            button.setText("NOPE!!!");
+        }
+        else if((win1 == 5) || (win2 == 5))
         {
             button.setText("WIN!!");
         }
@@ -97,12 +122,17 @@ public class GamesMain extends AppCompatActivity {
         {
             button.setText("LOSE!!");
         }
+        clicked = true;
     }
 
     public void buttonSixClick(View view)
     {
         Button button = (Button)view;
-        if((win1 == 6) || (win2 == 6))
+        if(clicked == true)
+        {
+            button.setText("NOPE!!!");
+        }
+        else if((win1 == 6) || (win2 == 6))
         {
             button.setText("WIN!!");
         }
@@ -110,12 +140,17 @@ public class GamesMain extends AppCompatActivity {
         {
             button.setText("LOSE!!");
         }
+        clicked = true;
     }
 
     public void buttonSevenClick(View view)
     {
         Button button = (Button)view;
-        if((win1 == 7) || (win2 == 7))
+        if(clicked == true)
+        {
+            button.setText("NOPE!!!");
+        }
+        else if((win1 == 7) || (win2 == 7))
         {
             button.setText("WIN!!");
         }
@@ -123,12 +158,17 @@ public class GamesMain extends AppCompatActivity {
         {
             button.setText("LOSE!!");
         }
+        clicked = true;
     }
 
     public void buttonEightClick(View view)
     {
         Button button = (Button)view;
-        if((win1 == 8) || (win2 == 8))
+        if(clicked == true)
+        {
+            button.setText("NOPE!!!");
+        }
+        else if((win1 == 8) || (win2 == 8))
         {
             button.setText("WIN!!");
         }
@@ -136,12 +176,17 @@ public class GamesMain extends AppCompatActivity {
         {
             button.setText("LOSE!!");
         }
+        clicked = true;
     }
 
     public void buttonNineClick(View view)
     {
         Button button = (Button)view;
-        if((win1 == 9) || (win2 == 9))
+        if(clicked == true)
+        {
+            button.setText("NOPE!!!");
+        }
+        else if((win1 == 9) || (win2 == 9))
         {
             button.setText("WIN!!");
         }
@@ -149,12 +194,17 @@ public class GamesMain extends AppCompatActivity {
         {
             button.setText("LOSE!!");
         }
+        clicked = true;
     }
 
     public void buttonTenClick(View view)
     {
         Button button = (Button)view;
-        if((win1 == 10) || (win2 == 10))
+        if(clicked == true)
+        {
+            button.setText("NOPE!!!");
+        }
+        else if((win1 == 10) || (win2 == 10))
         {
             button.setText("WIN!!");
         }
@@ -162,6 +212,7 @@ public class GamesMain extends AppCompatActivity {
         {
             button.setText("LOSE!!");
         }
+        clicked = true;
     }
 
 }
