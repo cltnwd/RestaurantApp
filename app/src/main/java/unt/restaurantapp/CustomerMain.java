@@ -123,6 +123,7 @@ public class CustomerMain extends AppCompatActivity {
             new TableStatusAsync(TABLE_ID, "refill").execute();
             Toast.makeText(getBaseContext(), "Request sent!", Toast.LENGTH_SHORT).show();
         }
+
         if (item.getItemId() == R.id.action_Help) {
             new TableStatusAsync(TABLE_ID, "help").execute();
             Toast.makeText(getBaseContext(), "Request sent!", Toast.LENGTH_SHORT).show();
