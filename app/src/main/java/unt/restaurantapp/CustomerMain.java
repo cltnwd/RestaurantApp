@@ -25,7 +25,7 @@ public class CustomerMain extends AppCompatActivity {
     String MY_PREFS_NAME = "restaurant_app_shared_preferences";
     private Menu menu;
     Button loginButton;
-    int TABLE_ID = 1;
+    int TABLE_ID = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,7 +121,11 @@ public class CustomerMain extends AppCompatActivity {
 
         if (item.getItemId() == R.id.action_refill) {
             new TableStatusAsync(TABLE_ID, "refill").execute();
-
+            Toast.makeText(getBaseContext(), "Request sent!", Toast.LENGTH_SHORT).show();
+        }
+        if (item.getItemId() == R.id.action_Help) {
+            new TableStatusAsync(TABLE_ID, "help").execute();
+            Toast.makeText(getBaseContext(), "Request sent!", Toast.LENGTH_SHORT).show();
         }
 
 

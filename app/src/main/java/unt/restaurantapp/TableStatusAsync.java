@@ -76,6 +76,5 @@ class TableStatusAsync extends AsyncTask<Pair<Context, String>, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         System.out.println(result);
-
     }
 }
