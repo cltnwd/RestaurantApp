@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="unt.restaurantapp.MainActivity">
+
+    <item
+        android:id="@+id/action_refill"
+        android:orderInCategory="100"
+        android:title="Refill"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_Help"
+        android:orderInCategory="100"
+        android:title="Help"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_tablenum"
+        android:orderInCategory="200"
+        android:title="Table 1"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_Logout"
+        android:orderInCategory="100"
+        android:title="Logout"
+        app:showAsAction="never" />
+
+</menu>
