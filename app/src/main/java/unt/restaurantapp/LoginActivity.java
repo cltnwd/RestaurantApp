@@ -3,7 +3,6 @@ package unt.restaurantapp;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -49,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void registerUser(View view) {
-        Intent intent = new Intent(this, RegisterLoginActivity.class);
+        Intent intent = new Intent(this, RegisterUserActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }

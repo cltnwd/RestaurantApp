@@ -12,4 +12,5 @@
     <string name="already_logged_in"><u>Already registered? Tap here to log in!</u></string>
     <string name="return_to_register"><u>New user? Tap here to register!</u></string>
     <string name="title_activity_game_links">GameLinks</string>
+    <string name="title_activity_view_tables">ViewTables</string>
 </resources>

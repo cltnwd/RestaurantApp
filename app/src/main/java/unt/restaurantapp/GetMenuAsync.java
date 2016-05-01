@@ -2,6 +2,7 @@ package unt.restaurantapp;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.SystemClock;
 import android.support.v4.util.Pair;
 import android.util.Log;
 import android.widget.Toast;
@@ -31,7 +32,12 @@ class GetMenuAsync extends AsyncTask<Pair<Context, String>, Void, String> {
         StringBuilder result = new StringBuilder();
         HttpURLConnection dbConnection = null;
 
-
+        // HOME TESTING ONLY
+        String str = android.os.Build.MODEL;
+        if (str.equals("Nexus 6")) {
+            urlstring = "http://192.168.1.6/webservice/viewmenu.php";
+            System.out.println(urlstring);
+        }
 
         // connect to url
         try {
@@ -67,6 +73,7 @@ class GetMenuAsync extends AsyncTask<Pair<Context, String>, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
+        System.out.println(result);
         caller.parseData(result);
     }
 }

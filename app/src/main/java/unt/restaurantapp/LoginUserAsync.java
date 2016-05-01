@@ -38,6 +38,12 @@ class LoginUserAsync extends AsyncTask<Pair<Context, String>, Void, String> {
 
         Log.d("request!", "starting");
 
+        // HOME TESTING ONLY
+        String str = android.os.Build.MODEL;
+        if (str.equals("Nexus 6")) {
+            urlstring = "http://192.168.1.6/webservice/login.php";
+        }
+
         // connect to url
         try {
 

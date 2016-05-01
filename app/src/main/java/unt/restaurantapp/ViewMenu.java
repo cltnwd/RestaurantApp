@@ -1,14 +1,10 @@
 package unt.restaurantapp;
 
 import android.annotation.TargetApi;
-import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.util.Pair;
-import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
@@ -41,6 +37,9 @@ public class ViewMenu extends AppCompatActivity {
     List<MenuItem> drinklist = new ArrayList<>();
     List<MenuItem> dessertlist = new ArrayList<>();
     String currentList = "";
+
+    String MY_PREFS_NAME = "restaurant_app_shared_preferences";
+    int TABLE_ID = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -254,17 +253,17 @@ public class ViewMenu extends AppCompatActivity {
             }
         }
 
-//        ListAdapter customAdapter1 = new ListAdapter(this, R.layout.itemlistrow, appetizerlist);
+//        ListAdapter customAdapter1 = new ListAdapter(this, R.layout.menuitemlistrow, appetizerlist);
 //        appetizerlistview.setAdapter(customAdapter1);
 
-        ListAdapter customAdapter2 = new ListAdapter(this, R.layout.itemlistrow, appetizerlist);
+        MenuListAdapter customAdapter2 = new MenuListAdapter(this, R.layout.menuitemlistrow, appetizerlist);
         menulistview.setAdapter(customAdapter2);
         currentList = "appetizers";
 //
-//        ListAdapter customAdapter3 = new ListAdapter(this, R.layout.itemlistrow, dessertlist);
+//        ListAdapter customAdapter3 = new ListAdapter(this, R.layout.menuitemlistrow, dessertlist);
 //        dessertlistview.setAdapter(customAdapter3);
 //
-//        ListAdapter customAdapter4 = new ListAdapter(this, R.layout.itemlistrow, drinklist);
+//        ListAdapter customAdapter4 = new ListAdapter(this, R.layout.menuitemlistrow, drinklist);
 //        drinklistview.setAdapter(customAdapter4);
 
 
@@ -365,31 +364,31 @@ public class ViewMenu extends AppCompatActivity {
 
     public void updateList(View view) {
 
-        ListAdapter customAdapter;
+        MenuListAdapter customAdapter;
 
         if (view.getId() == R.id.appetizerslistbtn) {
-            customAdapter = new ListAdapter(this, R.layout.itemlistrow, appetizerlist);
+            customAdapter = new MenuListAdapter(this, R.layout.menuitemlistrow, appetizerlist);
             menulistview.setAdapter(customAdapter);
             currentList = "appetizers";
 
         }
 
         else if (view.getId() == R.id.entreeslistbtn) {
-            customAdapter = new ListAdapter(this, R.layout.itemlistrow, entreelist);
+            customAdapter = new MenuListAdapter(this, R.layout.menuitemlistrow, entreelist);
             menulistview.setAdapter(customAdapter);
             currentList = "entrees";
 
         }
 
         else if (view.getId() == R.id.drinkslistbtn) {
-            customAdapter = new ListAdapter(this, R.layout.itemlistrow, drinklist);
+            customAdapter = new MenuListAdapter(this, R.layout.menuitemlistrow, drinklist);
             menulistview.setAdapter(customAdapter);
             currentList = "drinks";
 
         }
 
         else if (view.getId() == R.id.dessertslistbtn) {
-            customAdapter = new ListAdapter(this, R.layout.itemlistrow, dessertlist);
+            customAdapter = new MenuListAdapter(this, R.layout.menuitemlistrow, dessertlist);
             menulistview.setAdapter(customAdapter);
             currentList = "desserts";
 
@@ -402,6 +401,44 @@ public class ViewMenu extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_customer, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+
+        if (item.getItemId() == R.id.action_Logout) {
+
+            SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+            if (prefs.getString("username", null) == null) {
+                Toast.makeText(this, "You aren't signed in!", Toast.LENGTH_SHORT).show();
+            }
+
+            else {
+                // clear preferences
+                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                editor.putString("username", null);
+                editor.putBoolean("isLoggedIn", false);
+                editor.apply();
+
+                // make sure log out was successful
+                if (prefs.getString("username", null) == null) {
+                    Toast.makeText(this, "Goodbye!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+        if (item.getItemId() == R.id.action_refill) {
+            new SetTableStatusAsync(TABLE_ID, "refill").execute();
+            Toast.makeText(getBaseContext(), "Request sent!", Toast.LENGTH_SHORT).show();
+        }
+
+        if (item.getItemId() == R.id.action_Help) {
+            new SetTableStatusAsync(TABLE_ID, "help").execute();
+            Toast.makeText(getBaseContext(), "Request sent!", Toast.LENGTH_SHORT).show();
+        }
+
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

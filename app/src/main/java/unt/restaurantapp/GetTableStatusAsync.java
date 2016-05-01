@@ -16,47 +16,35 @@ import java.net.URL;
 /**
  * Created by coltonwood on 4/11/16.
  */
-class RegisterUserAsync extends AsyncTask<Pair<Context, String>, Void, String> {
-    String fname, lname, username, email, password;
-
-    private String urlstring = "http://10.0.2.2/webservice/register.php";
+class GetTableStatusAsync extends AsyncTask<Pair<Context, String>, Void, String> {
+    private String urlstring = "http://10.0.2.2/webservice/gettablestatus.php";
     URL url;
-    RegisterUserActivity caller;
+    ViewTablesActivity caller;
 
-    RegisterUserAsync(RegisterUserActivity context, String fname, String lname, String username, String email, String password) {
+    GetTableStatusAsync(ViewTablesActivity context) {
         caller = context;
-        this.fname = fname;
-        this.lname = lname;
-        this.username = username;
-        this.email = email;
-        this.password = password;
     }
 
     @Override
     protected String doInBackground(Pair<Context, String>... params) {
-
-        // Check for success tag
-        HttpURLConnection dbConnection = null;
         StringBuilder result = new StringBuilder();
-
-        Log.d("request!", "starting");
+        HttpURLConnection dbConnection = null;
 
         // HOME TESTING ONLY
         String str = android.os.Build.MODEL;
         if (str.equals("Nexus 6")) {
-            urlstring = "http://192.168.1.6/webservice/register.php";
+            urlstring = "http://192.168.1.6/webservice/gettablestatus.php";
+            System.out.println(urlstring);
         }
 
         // connect to url
         try {
-            url = new URL(urlstring + "?fname=" + fname + "&lname=" + lname + "&username=" + username.toLowerCase() + "&email=" + email + "&password=" + password);
-            System.out.println(url);
+            url = new URL(urlstring);
             dbConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {
             e.printStackTrace();
             Log.d("error::", "error connecting to url");
         }
-
 
         try {
             // pull data from url
@@ -72,16 +60,17 @@ class RegisterUserAsync extends AsyncTask<Pair<Context, String>, Void, String> {
         } catch (IOException e) {
             e.printStackTrace();
             Log.d("error::", "error building json string");
-        } finally {
+        }
+        finally {
             dbConnection.disconnect();
         }
 
+        // return the json string
         return result.toString();
     }
 
-
     @Override
     protected void onPostExecute(String result) {
-        caller.userRegistered(result);
+        caller.parseData(result);
     }
 }

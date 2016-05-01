@@ -6,10 +6,8 @@ import android.widget.ArrayAdapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.List;
@@ -17,13 +15,13 @@ import java.util.List;
 /**
  * Created by coltonwood on 4/16/16.
  */
-public class ListAdapter extends ArrayAdapter<MenuItem> {
+public class MenuListAdapter extends ArrayAdapter<MenuItem> {
 
-    public ListAdapter(Context context, int textViewResourceId) {
+    public MenuListAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
     }
 
-    public ListAdapter(Context context, int resource, List<MenuItem> items) {
+    public MenuListAdapter(Context context, int resource, List<MenuItem> items) {
         super(context, resource, items);
     }
 
@@ -35,7 +33,7 @@ public class ListAdapter extends ArrayAdapter<MenuItem> {
         if (v == null) {
             LayoutInflater vi;
             vi = LayoutInflater.from(getContext());
-            v = vi.inflate(R.layout.itemlistrow, null);
+            v = vi.inflate(R.layout.menuitemlistrow, null);
         }
 
         MenuItem p = getItem(position);

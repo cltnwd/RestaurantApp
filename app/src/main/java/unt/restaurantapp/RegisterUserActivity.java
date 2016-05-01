@@ -14,7 +14,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class RegisterLoginActivity extends AppCompatActivity {
+public class RegisterUserActivity extends AppCompatActivity {
 
     String MY_PREFS_NAME = "restaurant_app_shared_preferences";
     EditText usernameET, passwordET, emailET, fnameET, lnameET;

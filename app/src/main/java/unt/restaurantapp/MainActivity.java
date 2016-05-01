@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else if (view.getId() == R.id.waitstaffloginbtn) {
-            Intent intent = new Intent(this, WaitstaffMain.class);
+            Intent intent = new Intent(this, ViewTablesActivity.class);
             startActivity(intent);
         }
         else if (view.getId() == R.id.kitchenloginbtn) {

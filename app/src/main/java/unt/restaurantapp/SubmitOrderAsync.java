@@ -23,6 +23,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -37,7 +39,6 @@ class SubmitOrderAsync extends AsyncTask<Pair<Context, String>, Void, String> {
     SubmitOrderAsync(ViewMenu context, List<MenuItem> order) {
         caller = context;
         this.order = order;
-
     }
 
     @Override
@@ -48,6 +49,12 @@ class SubmitOrderAsync extends AsyncTask<Pair<Context, String>, Void, String> {
         String orderstring = "";
         HttpURLConnection dbConnection = null;
         StringBuilder result = new StringBuilder();
+
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time => " + c.getTime());
+
+        SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+        String formattedDate = df.format(c.getTime());
 
         // build order string
         for (int i = 0; i < order.size(); i++) {
@@ -64,9 +71,15 @@ class SubmitOrderAsync extends AsyncTask<Pair<Context, String>, Void, String> {
 
         Log.d("request!", "starting");
 
+        // HOME TESTING ONLY
+        String str = android.os.Build.MODEL;
+        if (str.equals("Nexus 6")) {
+            urlstring = "http://192.168.1.6/webservice/submitorder.php";
+        }
+
         // connect to url
         try {
-            url = new URL(urlstring + "?orderstring=" + orderstring);
+            url = new URL(urlstring + "?orderstring=" + orderstring + "&status=unclaimed" + "&date=" + formattedDate);
             System.out.println(url);
             dbConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {

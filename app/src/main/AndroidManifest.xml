@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="unt.restaurantapp"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="unt.restaurantapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -60,7 +60,7 @@
             android:parentActivityName=".CustomerMain"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".RegisterLoginActivity"
+            android:name=".RegisterUserActivity"
             android:label="@string/title_activity_register_login"
             android:parentActivityName=".CustomerMain"
             android:theme="@style/AppTheme.NoActionBar">
@@ -77,7 +77,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="unt.restaurantapp.CustomerMain" />
         </activity>
-            android:theme="@style/AppTheme.NoActionBar"/>
+        android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".GameLinks"
             android:label="@string/title_activity_game_links"
@@ -85,7 +85,16 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="unt.restaurantapp.CustomerMain"/>
+                android:value="unt.restaurantapp.CustomerMain" />
+        </activity>
+        <activity
+            android:name=".ViewTablesActivity"
+            android:label="@string/title_activity_view_tables"
+            android:parentActivityName=".WaitstaffMain"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="unt.restaurantapp.WaitstaffMain" />
         </activity>
     </application>
 
