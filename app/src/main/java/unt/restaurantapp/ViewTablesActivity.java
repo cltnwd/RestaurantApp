@@ -1,5 +1,7 @@
 package unt.restaurantapp;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -86,8 +88,12 @@ public class ViewTablesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                // TODO: add table info to intent and launch view table activity
-                Toast.makeText(ViewTablesActivity.this, "Click! table "+(position+1), Toast.LENGTH_SHORT).show();
+                // pass tableid and status to edit table activity
+                Intent intent = new Intent(getBaseContext(), EditTableActivity.class);
+                intent.putExtra("tableid", tables.get(position).getId());
+                intent.putExtra("status", tables.get(position).getStatus());
+
+                startActivity(intent);
 
             }
         });

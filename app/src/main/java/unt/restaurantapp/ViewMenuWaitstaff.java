@@ -24,13 +24,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class ViewMenu extends AppCompatActivity {
+public class ViewMenuWaitstaff extends AppCompatActivity {
 
     ListView menulistview;
     TextView orderTotalView;
     CardView expandableCardView;
     float ordertotal=0;
     ArrayList<MenuItem> currentOrder;
+    int tableid;
+    String tablestatus;
 
     List<MenuItem> entreelist = new ArrayList<>();
     List<MenuItem> appetizerlist = new ArrayList<>();
@@ -39,7 +41,6 @@ public class ViewMenu extends AppCompatActivity {
     String currentList = "";
 
     String MY_PREFS_NAME = "restaurant_app_shared_preferences";
-    int TABLE_ID = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,9 @@ public class ViewMenu extends AppCompatActivity {
         getSupportActionBar().setTitle("Menu");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        tableid = getIntent().getIntExtra("tableid", 1);
+        tablestatus = getIntent().getStringExtra("tablestatus");
+
         currentOrder = new ArrayList<>();
 
         orderTotalView = (TextView)findViewById(R.id.orderTotal);
@@ -58,7 +62,7 @@ public class ViewMenu extends AppCompatActivity {
         menulistview = (ListView)findViewById(R.id.menulistview);
 
         // pull current menu from database
-        new GetMenuAsync(this).execute();
+        new GetMenuWaitstaffAsync(this).execute();
 
 
         expandableCardView.setOnClickListener(new View.OnClickListener() {
@@ -330,7 +334,7 @@ public class ViewMenu extends AppCompatActivity {
         else {
 
             // submit the order in background
-            new SubmitOrderAsync(this, currentOrder).execute();
+            new SubmitOrderWaitstaffAsync(this, tableid, currentOrder).execute();
         }
 
     }
@@ -345,8 +349,10 @@ public class ViewMenu extends AppCompatActivity {
 
             if (jsonroot.optInt("success") == 1) {
                 Toast.makeText(getBaseContext(), "Order submitted!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(ViewMenu.this, CustomerMain.class);
+                Intent intent = new Intent(ViewMenuWaitstaff.this, EditTableActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("tableid", tableid);
+                intent.putExtra("tablestatus", tablestatus);
                 startActivity(intent);
             }
 
@@ -400,45 +406,7 @@ public class ViewMenu extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_customer, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(android.view.MenuItem item) {
-
-        if (item.getItemId() == R.id.action_Logout) {
-
-            SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-            if (prefs.getString("username", null) == null) {
-                Toast.makeText(this, "You aren't signed in!", Toast.LENGTH_SHORT).show();
-            }
-
-            else {
-                // clear preferences
-                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                editor.putString("username", null);
-                editor.putBoolean("isLoggedIn", false);
-                editor.apply();
-
-                // make sure log out was successful
-                if (prefs.getString("username", null) == null) {
-                    Toast.makeText(this, "Goodbye!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-
-        if (item.getItemId() == R.id.action_refill) {
-            new SetTableStatusAsync(TABLE_ID, "Needs refill").execute();
-            Toast.makeText(getBaseContext(), "Request sent!", Toast.LENGTH_SHORT).show();
-        }
-
-        if (item.getItemId() == R.id.action_Help) {
-            new SetTableStatusAsync(TABLE_ID, "Needs help").execute();
-            Toast.makeText(getBaseContext(), "Request sent!", Toast.LENGTH_SHORT).show();
-        }
-
-
-        return super.onOptionsItemSelected(item);
+        return false;
     }
 
 }

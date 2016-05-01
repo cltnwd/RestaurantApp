@@ -112,12 +112,12 @@ public class CustomerMain extends AppCompatActivity {
         }
 
         if (item.getItemId() == R.id.action_refill) {
-            new SetTableStatusAsync(TABLE_ID, "refill").execute();
+            new SetTableStatusAsync(TABLE_ID, "Needs refill").execute();
             Toast.makeText(getBaseContext(), "Request sent!", Toast.LENGTH_SHORT).show();
         }
 
         if (item.getItemId() == R.id.action_Help) {
-            new SetTableStatusAsync(TABLE_ID, "help").execute();
+            new SetTableStatusAsync(TABLE_ID, "Needs help").execute();
             Toast.makeText(getBaseContext(), "Request sent!", Toast.LENGTH_SHORT).show();
         }
 

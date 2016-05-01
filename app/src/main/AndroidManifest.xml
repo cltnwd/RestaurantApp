@@ -60,6 +60,11 @@
             android:parentActivityName=".CustomerMain"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".ViewMenuWaitstaff"
+            android:label="@string/title_activity_view_menu"
+            android:parentActivityName=".EditTableActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".RegisterUserActivity"
             android:label="@string/title_activity_register_login"
             android:parentActivityName=".CustomerMain"
@@ -95,6 +100,15 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="unt.restaurantapp.WaitstaffMain" />
+        </activity>
+        <activity
+            android:name=".EditTableActivity"
+            android:label="@string/title_activity_edit_table"
+            android:parentActivityName=".ViewTablesActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="unt.restaurantapp.ViewTablesActivity" />
         </activity>
     </application>
 

@@ -1,18 +1,9 @@
 package unt.restaurantapp;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.provider.Settings;
 import android.support.v4.util.Pair;
 import android.util.Log;
-import android.view.Menu;
-
-import com.google.api.client.http.HttpResponse;
-import com.google.api.client.testing.http.apache.MockHttpClient;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -20,9 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -30,15 +19,17 @@ import java.util.List;
 /**
  * Created by coltonwood on 4/11/16.
  */
-class SubmitOrderAsync extends AsyncTask<Pair<Context, String>, Void, String> {
-    private String urlstring = "http://10.0.2.2/webservice/submitorder.php";
+class SubmitOrderWaitstaffAsync extends AsyncTask<Pair<Context, String>, Void, String> {
+    private String urlstring = "http://10.0.2.2/webservice/submitorderwait.php";
     URL url;
-    ViewMenu caller;
+    ViewMenuWaitstaff caller;
     List<MenuItem> order;
+    int tableid;
 
-    SubmitOrderAsync(ViewMenu context, List<MenuItem> order) {
+    SubmitOrderWaitstaffAsync(ViewMenuWaitstaff context, int tableid, List<MenuItem> order) {
         caller = context;
         this.order = order;
+        this.tableid = tableid;
     }
 
     @Override
@@ -74,12 +65,12 @@ class SubmitOrderAsync extends AsyncTask<Pair<Context, String>, Void, String> {
         // HOME TESTING ONLY
         String str = android.os.Build.MODEL;
         if (str.equals("Nexus 6")) {
-            urlstring = "http://192.168.1.6/webservice/submitorder.php";
+            urlstring = "http://192.168.1.6/webservice/submitorderwait.php";
         }
 
         // connect to url
         try {
-            url = new URL(urlstring + "?orderstring=" + orderstring + "&status=unclaimed" + "&date=" + formattedDate + "&tableid=1");
+            url = new URL(urlstring + "?orderstring=" + orderstring + "&status=unclaimed" + "&date=" + formattedDate + "&tableid=" + tableid);
             System.out.println(url);
             dbConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {
