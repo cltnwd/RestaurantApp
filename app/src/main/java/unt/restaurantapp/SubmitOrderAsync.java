@@ -1,18 +1,9 @@
 package unt.restaurantapp;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.provider.Settings;
 import android.support.v4.util.Pair;
 import android.util.Log;
-import android.view.Menu;
-
-import com.google.api.client.http.HttpResponse;
-import com.google.api.client.testing.http.apache.MockHttpClient;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -20,9 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -31,7 +20,9 @@ import java.util.List;
  * Created by coltonwood on 4/11/16.
  */
 class SubmitOrderAsync extends AsyncTask<Pair<Context, String>, Void, String> {
-    private String urlstring = "http://10.0.2.2/webservice/submitorder.php";
+    //private String urlstring = "http://10.0.2.2/webservice/submitorder.php";
+    DynamicIP ip = new DynamicIP();
+    private String urlstring = "http://" + ip.getIP() + "/webservice/submitorder.php";
     URL url;
     ViewMenu caller;
     List<MenuItem> order;

@@ -19,7 +19,10 @@ import java.net.URL;
  * Created by coltonwood on 4/11/16.
  */
 class GetMenuAsync extends AsyncTask<Pair<Context, String>, Void, String> {
-    private String urlstring = "http://10.0.2.2/webservice/viewmenu.php";
+
+    //private String urlstring = "http://10.0.2.2/webservice/viewmenu.php";
+    DynamicIP ip = new DynamicIP();
+    private String urlstring = "http://" + ip.getIP() + "/webservice/viewmenu.php";
     URL url;
     ViewMenu caller;
 
@@ -31,13 +34,6 @@ class GetMenuAsync extends AsyncTask<Pair<Context, String>, Void, String> {
     protected String doInBackground(Pair<Context, String>... params) {
         StringBuilder result = new StringBuilder();
         HttpURLConnection dbConnection = null;
-
-        // HOME TESTING ONLY
-        String str = android.os.Build.MODEL;
-        if (str.equals("Nexus 6")) {
-            urlstring = "http://192.168.1.6/webservice/viewmenu.php";
-            System.out.println(urlstring);
-        }
 
         // connect to url
         try {

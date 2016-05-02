@@ -17,7 +17,8 @@
         android:id="@+id/kitchenViewLiveFeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View Order Feed"/>
+        android:text="View Order Feed"
+        android:onClick="viewOrders"/>
 
     <Button
         android:id="@+id/kitchenEditMenu"

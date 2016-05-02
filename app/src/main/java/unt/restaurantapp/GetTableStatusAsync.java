@@ -17,7 +17,11 @@ import java.net.URL;
  * Created by coltonwood on 4/11/16.
  */
 class GetTableStatusAsync extends AsyncTask<Pair<Context, String>, Void, String> {
-    private String urlstring = "http://10.0.2.2/webservice/gettablestatus.php";
+    //private String urlstring = "http://10.0.2.2/webservice/gettablestatus.php";
+
+    DynamicIP ip = new DynamicIP();
+    private String urlstring = "http://" + ip.getIP() + "/webservice/gettablestatus.php";
+
     URL url;
     ViewTablesActivity caller;
 

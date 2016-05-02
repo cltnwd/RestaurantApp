@@ -23,7 +23,9 @@ class SetBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
     int tableid;
     AdjustBillActivity caller;
 
-    private String urlstring = "http://10.0.2.2/webservice/setbill.php";
+    //private String urlstring = "http://10.0.2.2/webservice/setbill.php";
+    DynamicIP ip = new DynamicIP();
+    private String urlstring = "http://" + ip.getIP() + "/webservice/setbill.php";
     URL url;
 
     SetBillAsync(AdjustBillActivity adjustBillActivity, int tableid, float total) {
@@ -40,12 +42,6 @@ class SetBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
         StringBuilder result = new StringBuilder();
 
         Log.d("request!", "starting");
-
-        // HOME TESTING ONLY
-        String str = android.os.Build.MODEL;
-        if (str.equals("Nexus 6")) {
-            urlstring = "http://192.168.1.6/webservice/setbill.php";
-        }
 
         // connect to url
         try {

@@ -20,7 +20,9 @@ class SetTableStatusAsync extends AsyncTask<Pair<Context, String>, Void, String>
     String status;
     int tableid;
 
-    private String urlstring = "http://10.0.2.2/webservice/changetablestatus.php";
+    //private String urlstring = "http://10.0.2.2/webservice/changetablestatus.php";
+    DynamicIP ip = new DynamicIP();
+    private String urlstring = "http://" + ip.getIP() + "/webservice/changetablestatus.php";
     URL url;
     RegisterUserActivity caller;
 
@@ -38,11 +40,6 @@ class SetTableStatusAsync extends AsyncTask<Pair<Context, String>, Void, String>
 
         Log.d("request!", "starting");
 
-        // HOME TESTING ONLY
-        String str = android.os.Build.MODEL;
-        if (str.equals("Nexus 6")) {
-            urlstring = "http://192.168.1.6/webservice/changetablestatus.php";
-        }
 
         // connect to url
         try {

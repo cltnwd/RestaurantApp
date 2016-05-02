@@ -20,7 +20,9 @@ class AdjustBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
     String status;
     int tableid;
 
-    private String urlstring = "http://10.0.2.2/webservice/adjustbill.php";
+    //private String urlstring = "http://10.0.2.2/webservice/adjustbill.php";
+    DynamicIP ip = new DynamicIP();
+    private String urlstring = "http://" + ip.getIP() + "/webservice/adjustbill.php";
     URL url;
     RegisterUserActivity caller;
 
@@ -37,12 +39,6 @@ class AdjustBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
         StringBuilder result = new StringBuilder();
 
         Log.d("request!", "starting");
-
-        // HOME TESTING ONLY
-        String str = android.os.Build.MODEL;
-        if (str.equals("Nexus 6")) {
-            urlstring = "http://192.168.1.6/webservice/changetablestatus.php";
-        }
 
         // connect to url
         try {

@@ -20,7 +20,9 @@ import java.util.List;
  * Created by coltonwood on 4/11/16.
  */
 class SubmitOrderWaitstaffAsync extends AsyncTask<Pair<Context, String>, Void, String> {
-    private String urlstring = "http://10.0.2.2/webservice/submitorderwait.php";
+    //private String urlstring = "http://10.0.2.2/webservice/submitorderwait.php";
+    DynamicIP ip = new DynamicIP();
+    private String urlstring = "http://" + ip.getIP() + "/webservice/submitorderwait.php";
     URL url;
     ViewMenuWaitstaff caller;
     List<MenuItem> order;

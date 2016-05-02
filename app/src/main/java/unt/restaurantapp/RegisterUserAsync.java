@@ -19,7 +19,9 @@ import java.net.URL;
 class RegisterUserAsync extends AsyncTask<Pair<Context, String>, Void, String> {
     String fname, lname, username, email, password;
 
-    private String urlstring = "http://10.0.2.2/webservice/register.php";
+    //private String urlstring = "http://10.0.2.2/webservice/register.php";
+    DynamicIP ip = new DynamicIP();
+    private String urlstring = "http://" + ip.getIP() + "/webservice/register.php";
     URL url;
     RegisterUserActivity caller;
 
@@ -41,11 +43,6 @@ class RegisterUserAsync extends AsyncTask<Pair<Context, String>, Void, String> {
 
         Log.d("request!", "starting");
 
-        // HOME TESTING ONLY
-        String str = android.os.Build.MODEL;
-        if (str.equals("Nexus 6")) {
-            urlstring = "http://192.168.1.6/webservice/register.php";
-        }
 
         // connect to url
         try {

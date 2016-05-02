@@ -127,12 +127,21 @@
         <activity
             android:name=".AdjustBillActivity"
             android:label="@string/title_activity_adjust_bill"
-            android:screenOrientation="landscape"
             android:parentActivityName=".EditTableActivity"
+            android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="unt.restaurantapp.EditTableActivity" />
+        </activity>
+        <activity
+            android:name=".ViewOrdersActivity"
+            android:label="@string/title_activity_view_orders"
+            android:parentActivityName=".KitchenMain"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="unt.restaurantapp.KitchenMain" />
         </activity>
     </application>
 
