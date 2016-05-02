@@ -38,7 +38,6 @@ class SubmitOrderWaitstaffAsync extends AsyncTask<Pair<Context, String>, Void, S
     protected String doInBackground(Pair<Context, String>... params) {
 
         // Check for success tag
-        int success;
         String orderstring = "";
         HttpURLConnection dbConnection = null;
         StringBuilder result = new StringBuilder();
@@ -63,12 +62,6 @@ class SubmitOrderWaitstaffAsync extends AsyncTask<Pair<Context, String>, Void, S
 
 
         Log.d("request!", "starting");
-
-        // HOME TESTING ONLY
-        String str = android.os.Build.MODEL;
-        if (str.equals("Nexus 6")) {
-            urlstring = "http://192.168.1.6/webservice/submitorderwait.php";
-        }
 
         // connect to url
         try {

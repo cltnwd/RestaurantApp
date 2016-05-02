@@ -32,12 +32,6 @@ class GetBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
         StringBuilder result = new StringBuilder();
         HttpURLConnection dbConnection = null;
 
-        // HOME TESTING ONLY
-        String str = android.os.Build.MODEL;
-        if (str.equals("Nexus 6")) {
-            urlstring = "http://192.168.1.6/webservice/getbill.php";
-        }
-
         // connect to url
         try {
             urlstring = urlstring + "?tableid=" + tableid;
