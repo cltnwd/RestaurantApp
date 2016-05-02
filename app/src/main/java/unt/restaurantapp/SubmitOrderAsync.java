@@ -35,11 +35,14 @@ class SubmitOrderAsync extends AsyncTask<Pair<Context, String>, Void, String> {
     URL url;
     ViewMenu caller;
     List<MenuItem> order;
+    float ordertotal;
 
-    SubmitOrderAsync(ViewMenu context, List<MenuItem> order) {
+    SubmitOrderAsync(ViewMenu context, List<MenuItem> order, float ordertotal) {
         caller = context;
         this.order = order;
+        this.ordertotal = ordertotal;
     }
+
 
     @Override
     protected String doInBackground(Pair<Context, String>... params) {
@@ -79,7 +82,7 @@ class SubmitOrderAsync extends AsyncTask<Pair<Context, String>, Void, String> {
 
         // connect to url
         try {
-            url = new URL(urlstring + "?orderstring=" + orderstring + "&status=unclaimed" + "&date=" + formattedDate + "&tableid=1");
+            url = new URL(urlstring + "?orderstring=" + orderstring + "&status=unclaimed" + "&date=" + formattedDate + "&tableid=1" + "&billstatus=unpaid" + "&price=" + ordertotal);
             System.out.println(url);
             dbConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {

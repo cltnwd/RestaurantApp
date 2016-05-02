@@ -159,7 +159,7 @@ public class ViewMenu extends AppCompatActivity {
 
                     // get info from json
                     String name = jsonitems.getJSONObject(i).optString("name");
-                    String description = jsonitems.getJSONObject(i).optString("description");
+                    String description = jsonitems.getJSONObject(i).optString("descr");
                     int calories = jsonitems.getJSONObject(i).optInt("numcalories");
                     double price = jsonitems.getJSONObject(i).optDouble("price");
                     int itemid = jsonitems.getJSONObject(i).optInt("id");
@@ -193,7 +193,7 @@ public class ViewMenu extends AppCompatActivity {
 
                     // get info from json
                     String name = jsonitems.getJSONObject(i).optString("name");
-                    String description = jsonitems.getJSONObject(i).optString("description");
+                    String description = jsonitems.getJSONObject(i).optString("descr");
                     int calories = jsonitems.getJSONObject(i).optInt("numcalories");
                     double price = jsonitems.getJSONObject(i).optDouble("price");
                     int itemid = jsonitems.getJSONObject(i).optInt("id");
@@ -228,7 +228,7 @@ public class ViewMenu extends AppCompatActivity {
 
                     // get info from json
                     String name = jsonitems.getJSONObject(i).optString("name");
-                    String description = jsonitems.getJSONObject(i).optString("description");
+                    String description = jsonitems.getJSONObject(i).optString("descr");
                     int calories = jsonitems.getJSONObject(i).optInt("numcalories");
                     double price = jsonitems.getJSONObject(i).optDouble("price");
                     int itemid = jsonitems.getJSONObject(i).optInt("id");
@@ -330,7 +330,7 @@ public class ViewMenu extends AppCompatActivity {
         else {
 
             // submit the order in background
-            new SubmitOrderAsync(this, currentOrder).execute();
+            new SubmitOrderAsync(this, currentOrder, ordertotal).execute();
         }
 
     }

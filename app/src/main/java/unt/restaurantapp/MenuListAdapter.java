@@ -50,6 +50,7 @@ public class MenuListAdapter extends ArrayAdapter<MenuItem> {
 
             if (tt2 != null) {
                 tt2.setText(p.getDescription());
+                System.out.println(p.getDescription());
             }
 
             if (tt3 != null) {

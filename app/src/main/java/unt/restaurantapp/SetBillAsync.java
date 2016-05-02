@@ -1,0 +1,89 @@
+package unt.restaurantapp;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.support.v4.util.Pair;
+import android.util.Log;
+import android.widget.Toast;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+/**
+ * Created by coltonwood on 4/11/16.
+ */
+class SetBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
+    float total;
+    int tableid;
+    AdjustBillActivity caller;
+
+    private String urlstring = "http://10.0.2.2/webservice/setbill.php";
+    URL url;
+
+    SetBillAsync(AdjustBillActivity adjustBillActivity, int tableid, float total) {
+        this.tableid = tableid;
+        this.total = total;
+        this.caller = adjustBillActivity;
+    }
+
+    @Override
+    protected String doInBackground(Pair<Context, String>... params) {
+
+        // Check for success tag
+        HttpURLConnection dbConnection = null;
+        StringBuilder result = new StringBuilder();
+
+        Log.d("request!", "starting");
+
+        // HOME TESTING ONLY
+        String str = android.os.Build.MODEL;
+        if (str.equals("Nexus 6")) {
+            urlstring = "http://192.168.1.6/webservice/setbill.php";
+        }
+
+        // connect to url
+        try {
+            System.out.println(urlstring + "?tableid=" + tableid + "+&total=" + total);
+            url = new URL(urlstring + "?tableid=" + tableid + "+&total=" + total);
+            System.out.println(url);
+            dbConnection = (HttpURLConnection) url.openConnection();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.d("error::", "error connecting to url");
+        }
+
+
+        try {
+            // pull data from url
+            InputStream in = new BufferedInputStream(dbConnection.getInputStream());
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+
+            // build json string line by line from the input stream from url
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.d("error::", "error building json string");
+        } finally {
+            dbConnection.disconnect();
+        }
+
+        return result.toString();
+    }
+
+
+    @Override
+    protected void onPostExecute(String result) {
+        Toast.makeText(caller, "Bill adjusted!", Toast.LENGTH_SHORT).show();
+        caller.finish();
+    }
+}
