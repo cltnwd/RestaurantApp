@@ -40,6 +40,7 @@ class GetOrderStatusAsync extends AsyncTask<Pair<Context, String>, Void, String>
         // connect to url
         try {
             url = new URL(urlstring + "?tableid="+tableid);
+            System.out.println(urlstring + "?tableid=" + tableid);
             dbConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {
             e.printStackTrace();

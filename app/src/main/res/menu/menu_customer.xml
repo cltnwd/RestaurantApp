@@ -7,12 +7,14 @@
         android:id="@+id/action_refill"
         android:orderInCategory="100"
         android:title="Refill"
+        android:icon="@drawable/ic_local_drink_white_24dp"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_Help"
         android:orderInCategory="100"
         android:title="Help"
+        android:icon="@drawable/ic_live_help_white_24dp"
         app:showAsAction="always" />
 
     <item

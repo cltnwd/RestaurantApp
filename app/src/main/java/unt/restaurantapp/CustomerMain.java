@@ -82,6 +82,7 @@ public class CustomerMain extends AppCompatActivity {
 
     public void checkoutBtn(View view) {
         new GetOrderStatusAsync(this, TABLE_ID).execute();
+        System.out.println("test");
     }
 
     public void parseData(String jsonString) {
@@ -98,8 +99,10 @@ public class CustomerMain extends AppCompatActivity {
         if (jsonroot != null) {
             if (jsonroot.optInt("success") == 1) {
                 checkout();
-            } else
+            } else {
+                System.out.println("here");
                 Toast.makeText(this, jsonroot.optString("message"), Toast.LENGTH_SHORT).show();
+            }
         }
         else
             Toast.makeText(this, "JSON parse error", Toast.LENGTH_SHORT).show();

@@ -334,7 +334,7 @@ public class ViewMenuWaitstaff extends AppCompatActivity {
         else {
 
             // submit the order in background
-            new SubmitOrderWaitstaffAsync(this, tableid, currentOrder).execute();
+            new SubmitOrderWaitstaffAsync(this, tableid, currentOrder, ordertotal).execute();
         }
 
     }
@@ -399,6 +399,58 @@ public class ViewMenuWaitstaff extends AppCompatActivity {
             currentList = "desserts";
 
         }
+
+        menulistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if (currentList.equals("appetizers")) {
+                    // adds tapped item to your order
+                    currentOrder.add(appetizerlist.get(position));
+
+                    // update price
+                    ordertotal += appetizerlist.get(position).getPrice();
+
+                    // update order total
+                    orderTotalView.setText("$" + String.format("%.2f", ordertotal));
+                }
+
+                else if (currentList.equals("entrees")) {
+                    // adds tapped item to your order
+                    currentOrder.add(entreelist.get(position));
+
+                    // update price
+                    ordertotal += entreelist.get(position).getPrice();
+
+                    // update order total
+                    orderTotalView.setText("$" + String.format("%.2f", ordertotal));
+                }
+
+                else if (currentList.equals("drinks")) {
+                    // adds tapped item to your order
+                    currentOrder.add(drinklist.get(position));
+
+                    // update price
+                    ordertotal += drinklist.get(position).getPrice();
+
+                    // update order total
+                    orderTotalView.setText("$" + String.format("%.2f", ordertotal));
+                }
+
+                else if (currentList.equals("desserts")) {
+                    // adds tapped item to your order
+                    currentOrder.add(dessertlist.get(position));
+
+                    // update price
+                    ordertotal += dessertlist.get(position).getPrice();
+
+                    // update order total
+                    orderTotalView.setText("$" + String.format("%.2f", ordertotal));
+                }
+
+
+            }
+        });
 
     }
 
