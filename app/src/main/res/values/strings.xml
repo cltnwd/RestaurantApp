@@ -16,4 +16,7 @@
     <string name="title_activity_edit_table">Table</string>
     <string name="title_activity_adjust_bill">Adjust Bill</string>
     <string name="title_activity_view_orders">Order Feed</string>
+    <string name="title_activity_checkout_customer">Checkout</string>
+    <string name="title_activity_view_order_feed">Live Order Feed</string>
+    <string name="title_activity_view_order">Order View</string>
 </resources>

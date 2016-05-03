@@ -52,15 +52,23 @@ public class EditTableActivity extends AppCompatActivity {
 
             case R.id.statushelpradio:
                 if (checked) {
-                    newtablestatus = "Needs help";
+                    newtablestatus = "Help";
                 }
                     break;
 
             case R.id.statusrefillradio:
                 if (checked) {
-                    newtablestatus = "Needs refill";
+                    newtablestatus = "Refill";
                 }
                     break;
+
+            case R.id.statuspaidradio:
+                if (checked) {
+                    newtablestatus = "OK";
+                    new SetBillAsync(tableid, 0).execute();
+                    new SetBillStatusAsync(tableid, "paid").execute();
+                }
+
         }
     }
 
@@ -83,7 +91,6 @@ public class EditTableActivity extends AppCompatActivity {
 
     public void editBill(String jsonString) {
 
-        String order = null;
         float ordertotal = 0;
 
         // create json object from results
@@ -98,13 +105,18 @@ public class EditTableActivity extends AppCompatActivity {
             // get the names of the items
             if (jsonitems != null) {
                 for (int i = 0; i < jsonitems.length(); i++) {
-                    order += jsonitems.getJSONObject(i).optString("order");
                     ordertotal += jsonitems.getJSONObject(i).optDouble("price");
                 }
-                Intent intent = new Intent(this, AdjustBillActivity.class);
-                intent.putExtra("oldprice", ordertotal);
-                intent.putExtra("tableid", tableid);
-                startActivity(intent);
+                if (ordertotal > 0) {
+                    Intent intent = new Intent(this, AdjustBillActivity.class);
+                    intent.putExtra("oldprice", ordertotal);
+                    intent.putExtra("tableid", tableid);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(this, "No bill available", Toast.LENGTH_SHORT).show();
+                    new SetBillStatusAsync(tableid, "paid").execute();
+                }
             }
             else {
                 Toast.makeText(this, "No available bill(s)", Toast.LENGTH_SHORT).show();

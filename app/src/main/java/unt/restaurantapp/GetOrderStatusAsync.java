@@ -16,14 +16,17 @@ import java.net.URL;
 /**
  * Created by coltonwood on 4/11/16.
  */
-class GetBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
+class GetOrderStatusAsync extends AsyncTask<Pair<Context, String>, Void, String> {
+    //private String urlstring = "http://10.0.2.2/webservice/gettablestatus.php";
+
     DynamicIP ip = new DynamicIP();
-    private String urlstring = "http://"+ ip.getIP() + "/webservice/getbill.php";
+    private String urlstring = "http://" + ip.getIP() + "/webservice/getorderstatus.php";
+
     URL url;
-    EditTableActivity caller;
+    CustomerMain caller;
     int tableid;
 
-    GetBillAsync(EditTableActivity context, int tableid) {
+    GetOrderStatusAsync(CustomerMain context, int tableid) {
         caller = context;
         this.tableid = tableid;
     }
@@ -33,11 +36,10 @@ class GetBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
         StringBuilder result = new StringBuilder();
         HttpURLConnection dbConnection = null;
 
+
         // connect to url
         try {
-            urlstring = urlstring + "?tableid=" + tableid;
-            url = new URL(urlstring);
-            System.out.println(urlstring);
+            url = new URL(urlstring + "?tableid="+tableid);
             dbConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {
             e.printStackTrace();
@@ -69,6 +71,6 @@ class GetBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        caller.editBill(result);
+        caller.parseData(result);
     }
 }

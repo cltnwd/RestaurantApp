@@ -16,14 +16,14 @@ import java.net.URL;
 /**
  * Created by coltonwood on 4/11/16.
  */
-class GetBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
+class GetBillCheckoutAsync extends AsyncTask<Pair<Context, String>, Void, String> {
     DynamicIP ip = new DynamicIP();
-    private String urlstring = "http://"+ ip.getIP() + "/webservice/getbill.php";
+    private String urlstring = "http://"+ ip.getIP() + "/webservice/getbillcheckout.php";
     URL url;
-    EditTableActivity caller;
+    CheckoutCustomerActivity caller;
     int tableid;
 
-    GetBillAsync(EditTableActivity context, int tableid) {
+    GetBillCheckoutAsync(CheckoutCustomerActivity context, int tableid) {
         caller = context;
         this.tableid = tableid;
     }
@@ -69,6 +69,6 @@ class GetBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        caller.editBill(result);
+        caller.parseData(result);
     }
 }

@@ -51,7 +51,6 @@ class AdjustBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
             Log.d("error::", "error connecting to url");
         }
 
-
         try {
             // pull data from url
             InputStream in = new BufferedInputStream(dbConnection.getInputStream());

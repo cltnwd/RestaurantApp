@@ -138,10 +138,31 @@
             android:name=".ViewOrdersActivity"
             android:label="@string/title_activity_view_orders"
             android:parentActivityName=".KitchenMain"
+            android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="unt.restaurantapp.KitchenMain" />
+        </activity>
+        <activity
+            android:name=".CheckoutCustomerActivity"
+            android:label="@string/title_activity_checkout_customer"
+            android:parentActivityName=".CustomerMain"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="unt.restaurantapp.CustomerMain" />
+        </activity>
+        <activity
+            android:name=".ViewOrderActivity"
+            android:label="@string/title_activity_view_order"
+            android:screenOrientation="landscape"
+            android:parentActivityName=".ViewOrdersActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="unt.restaurantapp.ViewOrdersActivity" />
         </activity>
     </application>
 

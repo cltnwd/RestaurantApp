@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.animation.Interpolator;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AdjustBillActivity extends AppCompatActivity {
 
@@ -61,7 +62,9 @@ public class AdjustBillActivity extends AppCompatActivity {
     }
 
     public void updateBill(View view) {
-        new SetBillAsync(this, tableid, newtotal).execute();
+        new SetBillAsync(tableid, newtotal).execute();
+        Toast.makeText(this, "Bill adjusted", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
 }

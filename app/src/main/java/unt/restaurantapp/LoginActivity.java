@@ -66,11 +66,13 @@ public class LoginActivity extends AppCompatActivity {
 
                 // save fname of user
                 String fname = root.optString("fname");
-                System.out.println("FNAME::" + fname);
+                String username = root.optString("username");
+                System.out.println("FNAME::" + username);
 
                 // log user in, store fname
                 SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                editor.putString("username", fname);
+                editor.putString("fname", fname);
+                editor.putString("username", username);
                 editor.putBoolean("isLoggedIn", true);
                 editor.apply();
 

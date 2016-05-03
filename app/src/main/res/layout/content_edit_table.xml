@@ -55,6 +55,13 @@
                 android:text="Needs help"
                 android:onClick="onRadioButtonClicked"/>
 
+            <RadioButton
+                android:id="@+id/statuspaidradio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Paid out"
+                android:onClick="onRadioButtonClicked"/>
+
         </RadioGroup>
 
         <Button

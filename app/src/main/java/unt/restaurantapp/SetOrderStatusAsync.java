@@ -16,33 +16,40 @@ import java.net.URL;
 /**
  * Created by coltonwood on 4/11/16.
  */
-class GetBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
-    DynamicIP ip = new DynamicIP();
-    private String urlstring = "http://"+ ip.getIP() + "/webservice/getbill.php";
-    URL url;
-    EditTableActivity caller;
-    int tableid;
+class SetOrderStatusAsync extends AsyncTask<Pair<Context, String>, Void, String> {
+    String status;
+    int realid;
 
-    GetBillAsync(EditTableActivity context, int tableid) {
-        caller = context;
-        this.tableid = tableid;
+    //private String urlstring = "http://10.0.2.2/webservice/setbill.php";
+    DynamicIP ip = new DynamicIP();
+    private String urlstring = "http://" + ip.getIP() + "/webservice/setorderstatus.php";
+    URL url;
+
+    SetOrderStatusAsync(int realid, String status) {
+        this.realid = realid;
+        this.status = status;
     }
 
     @Override
     protected String doInBackground(Pair<Context, String>... params) {
-        StringBuilder result = new StringBuilder();
+
+        // Check for success tag
         HttpURLConnection dbConnection = null;
+        StringBuilder result = new StringBuilder();
+
+        Log.d("request!", "starting");
 
         // connect to url
         try {
-            urlstring = urlstring + "?tableid=" + tableid;
-            url = new URL(urlstring);
-            System.out.println(urlstring);
+            System.out.println(urlstring + "?realid=" + realid + "+&status=" + status);
+            url = new URL(urlstring + "?realid=" + realid + "+&status=" + status);
+            System.out.println(url);
             dbConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {
             e.printStackTrace();
             Log.d("error::", "error connecting to url");
         }
+
 
         try {
             // pull data from url
@@ -58,17 +65,16 @@ class GetBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
         } catch (IOException e) {
             e.printStackTrace();
             Log.d("error::", "error building json string");
-        }
-        finally {
+        } finally {
             dbConnection.disconnect();
         }
 
-        // return the json string
         return result.toString();
     }
 
+
     @Override
     protected void onPostExecute(String result) {
-        caller.editBill(result);
+        System.out.println(result);
     }
 }

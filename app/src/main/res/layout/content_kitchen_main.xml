@@ -11,19 +11,22 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="unt.restaurantapp.KitchenMain"
     tools:showIn="@layout/activity_kitchen_main"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <Button
         android:id="@+id/kitchenViewLiveFeed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:text="View Order Feed"
         android:onClick="viewOrders"/>
 
     <Button
         android:id="@+id/kitchenEditMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit Menu"/>
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:text="Edit Menu"
+        android:onClick="editMenu"/>
 
 </LinearLayout>

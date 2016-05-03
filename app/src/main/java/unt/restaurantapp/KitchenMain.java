@@ -29,6 +29,11 @@ public class KitchenMain extends AppCompatActivity {
 //    }
 
     public void viewOrders(View view) {
+        Intent intent = new Intent(this, ViewOrdersActivity.class);
+        startActivity(intent);
+    }
+
+    public void editMenu(View view) {
 
     }
 }
