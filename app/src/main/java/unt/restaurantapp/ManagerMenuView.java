@@ -2,9 +2,10 @@ package unt.restaurantapp;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -249,142 +250,39 @@ public class ManagerMenuView extends AppCompatActivity
             }
         }
 
-//        ListAdapter customAdapter1 = new ListAdapter(this, R.layout.itemlistrow, appetizerlist);
-//        appetizerlistview.setAdapter(customAdapter1);
 
-        ListAdapter customAdapter2 = new ListAdapter(this, R.layout.itemlistrow, appetizerlist);
-        menulistview.setAdapter(customAdapter2);
-        currentList = "appetizers";
-//
-//        ListAdapter customAdapter3 = new ListAdapter(this, R.layout.itemlistrow, dessertlist);
-//        dessertlistview.setAdapter(customAdapter3);
-//
-//        ListAdapter customAdapter4 = new ListAdapter(this, R.layout.itemlistrow, drinklist);
-//        drinklistview.setAdapter(customAdapter4);
-
-
-       /* menulistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                if (currentList.equals("appetizers")) {
-                    // adds tapped item to your order
-                    currentOrder.add(appetizerlist.get(position));
-
-                    // update price
-                    ordertotal += appetizerlist.get(position).getPrice();
-
-                    // update order total
-                    orderTotalView.setText("$" + String.format("%.2f", ordertotal));
-                }
-
-                else if (currentList.equals("entrees")) {
-                    // adds tapped item to your order
-                    currentOrder.add(entreelist.get(position));
-
-                    // update price
-                    ordertotal += entreelist.get(position).getPrice();
-
-                    // update order total
-                    orderTotalView.setText("$" + String.format("%.2f", ordertotal));
-                }
-
-                else if (currentList.equals("drinks")) {
-                    // adds tapped item to your order
-                    currentOrder.add(drinklist.get(position));
-
-                    // update price
-                    ordertotal += drinklist.get(position).getPrice();
-
-                    // update order total
-                    orderTotalView.setText("$" + String.format("%.2f", ordertotal));
-                }
-
-                else if (currentList.equals("desserts")) {
-                    // adds tapped item to your order
-                    currentOrder.add(dessertlist.get(position));
-
-                    // update price
-                    ordertotal += dessertlist.get(position).getPrice();
-
-                    // update order total
-                    orderTotalView.setText("$" + String.format("%.2f", ordertotal));
-                }
-
-
-            }
-        });*/
 
     }
 
-   /* public void submitOrder(View view) {
 
-        if (ordertotal == 0) {
-            Toast.makeText(getBaseContext(), "Please add items to your order", Toast.LENGTH_SHORT).show();
-        }
-
-        else {
-
-            // submit the order in background
-            new SubmitOrderAsync(this, currentOrder).execute();
-        }
-
-    }
-
-    public void orderSubmitted(String jsonString) {
-
-        // create json object from results
-        JSONObject jsonroot;
-        JSONArray jsonitems = null;
-        try {
-            jsonroot = new JSONObject(jsonString);
-
-            if (jsonroot.optInt("success") == 1) {
-                Toast.makeText(getBaseContext(), "Order submitted!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(ViewMenu.this, CustomerMain.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-
-            else {
-                Toast.makeText(getBaseContext(), "Please try again", Toast.LENGTH_SHORT).show();
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Log.d("logcat", "error converting string to json");
-        }
-
-
-    }*/
 
     public void updateList(View view) {
 
-        ListAdapter customAdapter;
+        MenuListAdapter customAdapter;
 
         if (view.getId() == R.id.appetizerslistbtn) {
-            customAdapter = new ListAdapter(this, R.layout.itemlistrow, appetizerlist);
+            customAdapter = new MenuListAdapter(this, R.layout.menuitemlistrow, appetizerlist);
             menulistview.setAdapter(customAdapter);
             currentList = "appetizers";
 
         }
 
         else if (view.getId() == R.id.entreeslistbtn) {
-            customAdapter = new ListAdapter(this, R.layout.itemlistrow, entreelist);
+            customAdapter = new MenuListAdapter(this, R.layout.menuitemlistrow, entreelist);
             menulistview.setAdapter(customAdapter);
             currentList = "entrees";
 
         }
 
         else if (view.getId() == R.id.drinkslistbtn) {
-            customAdapter = new ListAdapter(this, R.layout.itemlistrow, drinklist);
+            customAdapter = new MenuListAdapter(this, R.layout.menuitemlistrow, drinklist);
             menulistview.setAdapter(customAdapter);
             currentList = "drinks";
 
         }
 
         else if (view.getId() == R.id.dessertslistbtn) {
-            customAdapter = new ListAdapter(this, R.layout.itemlistrow, dessertlist);
+            customAdapter = new MenuListAdapter(this, R.layout.menuitemlistrow, dessertlist);
             menulistview.setAdapter(customAdapter);
             currentList = "desserts";
 
