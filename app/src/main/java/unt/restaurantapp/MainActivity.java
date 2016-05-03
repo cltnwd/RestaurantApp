@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else if (view.getId() == R.id.managerloginbtn) {
-            Intent intent = new Intent(this, ManagerMain.class);
+            Intent intent = new Intent(this, ManagerLoginActivity.class);
             startActivity(intent);
         }
         else {

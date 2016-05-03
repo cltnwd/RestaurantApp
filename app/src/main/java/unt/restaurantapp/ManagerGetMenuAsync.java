@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v4.util.Pair;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -14,15 +13,18 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import unt.restaurantapp.Classes.Manager;
+
 /**
- * Created by coltonwood on 4/11/16.
+ * Created by Michael on 5/2/2016.
  */
-class GetMenuAsync extends AsyncTask<Pair<Context, String>, Void, String> {
+public class ManagerGetMenuAsync extends AsyncTask<Pair<Context, String>, Void, String>
+{
     private String urlstring = "http://10.0.3.2/webservice/viewmenu.php";
     URL url;
-    ViewMenu caller;
+    ManagerMenuView caller;
 
-    GetMenuAsync(ViewMenu context) {
+    ManagerGetMenuAsync(ManagerMenuView context) {
         caller = context;
     }
 

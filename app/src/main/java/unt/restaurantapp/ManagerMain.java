@@ -20,6 +20,16 @@ public class  ManagerMain extends AppCompatActivity {
 
     }
 
+    public void manageMenu(View view)
+    {
+        Intent intent = new Intent(this, ManagerMenuView.class);
+        startActivity(intent);
+    }
+    public void manageUsers(View view)
+    {
+        Intent intent = new Intent(this, ViewUsers.class);
+        startActivity(intent);
+    }
 //    @Override
 //    public void onBackPressed() {
 //        Intent intent = new Intent(Intent.ACTION_MAIN);

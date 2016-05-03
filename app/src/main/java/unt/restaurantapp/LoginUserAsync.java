@@ -19,7 +19,7 @@ import java.net.URL;
 class LoginUserAsync extends AsyncTask<Pair<Context, String>, Void, String> {
     String fname, lname, username, email, password;
 
-    private String urlstring = "http://10.0.2.2/webservice/login.php";
+    private String urlstring = "http://10.0.3.2/webservice/login.php";
     URL url;
     LoginActivity caller;
 

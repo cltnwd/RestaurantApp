@@ -29,7 +29,7 @@ import java.util.List;
  * Created by coltonwood on 4/11/16.
  */
 class SubmitOrderAsync extends AsyncTask<Pair<Context, String>, Void, String> {
-    private String urlstring = "http://10.0.2.2/webservice/submitorder.php";
+    private String urlstring = "http://10.0.3.2/webservice/submitorder.php";
     URL url;
     ViewMenu caller;
     List<MenuItem> order;

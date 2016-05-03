@@ -21,7 +21,7 @@ class TableStatusAsync extends AsyncTask<Pair<Context, String>, Void, String> {
     String status;
     int tableid;
 
-    private String urlstring = "http://10.0.2.2/webservice/changetablestatus.php";
+    private String urlstring = "http://10.0.3.2/webservice/changetablestatus.php";
     URL url;
     RegisterLoginActivity caller;
 

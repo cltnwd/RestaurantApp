@@ -20,7 +20,7 @@ import java.util.List;
 class RegisterUserAsync extends AsyncTask<Pair<Context, String>, Void, String> {
     String fname, lname, username, email, password;
 
-    private String urlstring = "http://10.0.2.2/webservice/register.php";
+    private String urlstring = "http://10.0.3.2/webservice/register.php";
     URL url;
     RegisterLoginActivity caller;
 
