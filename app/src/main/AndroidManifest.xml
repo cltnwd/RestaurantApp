@@ -154,6 +154,7 @@
         </activity>
         <activity
             android:name=".ManagerLoginActivity"
+            android:screenOrientation="landscape"
             android:label="@string/title_activity_manager_login">
         </activity>
         <activity android:name=".ViewUsers">
