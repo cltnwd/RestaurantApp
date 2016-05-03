@@ -29,12 +29,14 @@
         android:id="@+id/managerViewMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View Menu"/>
+        android:text="View Menu"
+        android:onClick="manageMenu"/>
 
     <Button
         android:id="@+id/managerViewUsers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View Users"/>
+        android:text="View Users"
+        android:onClick="manageUsers"/>
 
 </LinearLayout>
