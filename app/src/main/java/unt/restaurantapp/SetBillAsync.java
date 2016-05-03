@@ -1,8 +1,8 @@
 package unt.restaurantapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.SystemClock;
 import android.support.v4.util.Pair;
 import android.util.Log;
 import android.widget.Toast;
@@ -18,31 +18,42 @@ import java.net.URL;
 /**
  * Created by coltonwood on 4/11/16.
  */
-class GetMenuAsync extends AsyncTask<Pair<Context, String>, Void, String> {
+class SetBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
+    float total;
+    int tableid;
+    AdjustBillActivity caller;
 
-    //private String urlstring = "http://10.0.2.2/webservice/viewmenu.php";
+    //private String urlstring = "http://10.0.2.2/webservice/setbill.php";
     DynamicIP ip = new DynamicIP();
-    private String urlstring = "http://" + ip.getIP() + "/webservice/viewmenu.php";
+    private String urlstring = "http://" + ip.getIP() + "/webservice/setbill.php";
     URL url;
-    ViewMenu caller;
 
-    GetMenuAsync(ViewMenu context) {
-        caller = context;
+    SetBillAsync(AdjustBillActivity adjustBillActivity, int tableid, float total) {
+        this.tableid = tableid;
+        this.total = total;
+        this.caller = adjustBillActivity;
     }
 
     @Override
     protected String doInBackground(Pair<Context, String>... params) {
-        StringBuilder result = new StringBuilder();
+
+        // Check for success tag
         HttpURLConnection dbConnection = null;
+        StringBuilder result = new StringBuilder();
+
+        Log.d("request!", "starting");
 
         // connect to url
         try {
-            url = new URL(urlstring);
+            System.out.println(urlstring + "?tableid=" + tableid + "+&total=" + total);
+            url = new URL(urlstring + "?tableid=" + tableid + "+&total=" + total);
+            System.out.println(url);
             dbConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {
             e.printStackTrace();
             Log.d("error::", "error connecting to url");
         }
+
 
         try {
             // pull data from url
@@ -58,18 +69,17 @@ class GetMenuAsync extends AsyncTask<Pair<Context, String>, Void, String> {
         } catch (IOException e) {
             e.printStackTrace();
             Log.d("error::", "error building json string");
-        }
-        finally {
+        } finally {
             dbConnection.disconnect();
         }
 
-        // return the json string
         return result.toString();
     }
 
+
     @Override
     protected void onPostExecute(String result) {
-        System.out.println(result);
-        caller.parseData(result);
+        Toast.makeText(caller, "Bill adjusted!", Toast.LENGTH_SHORT).show();
+        caller.finish();
     }
 }

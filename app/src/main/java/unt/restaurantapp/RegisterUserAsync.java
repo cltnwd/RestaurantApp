@@ -12,7 +12,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
 
 /**
  * Created by coltonwood on 4/11/16.
@@ -20,11 +19,13 @@ import java.util.List;
 class RegisterUserAsync extends AsyncTask<Pair<Context, String>, Void, String> {
     String fname, lname, username, email, password;
 
-    private String urlstring = "http://10.0.3.2/webservice/register.php";
+    //private String urlstring = "http://10.0.2.2/webservice/register.php";
+    DynamicIP ip = new DynamicIP();
+    private String urlstring = "http://" + ip.getIP() + "/webservice/register.php";
     URL url;
-    RegisterLoginActivity caller;
+    RegisterUserActivity caller;
 
-    RegisterUserAsync(RegisterLoginActivity context, String fname, String lname, String username, String email, String password) {
+    RegisterUserAsync(RegisterUserActivity context, String fname, String lname, String username, String email, String password) {
         caller = context;
         this.fname = fname;
         this.lname = lname;
@@ -41,6 +42,7 @@ class RegisterUserAsync extends AsyncTask<Pair<Context, String>, Void, String> {
         StringBuilder result = new StringBuilder();
 
         Log.d("request!", "starting");
+
 
         // connect to url
         try {

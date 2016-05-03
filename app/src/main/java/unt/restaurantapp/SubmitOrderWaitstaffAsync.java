@@ -19,27 +19,25 @@ import java.util.List;
 /**
  * Created by coltonwood on 4/11/16.
  */
-class SubmitOrderAsync extends AsyncTask<Pair<Context, String>, Void, String> {
-    //private String urlstring = "http://10.0.2.2/webservice/submitorder.php";
+class SubmitOrderWaitstaffAsync extends AsyncTask<Pair<Context, String>, Void, String> {
+    //private String urlstring = "http://10.0.2.2/webservice/submitorderwait.php";
     DynamicIP ip = new DynamicIP();
-    private String urlstring = "http://" + ip.getIP() + "/webservice/submitorder.php";
+    private String urlstring = "http://" + ip.getIP() + "/webservice/submitorderwait.php";
     URL url;
-    ViewMenu caller;
+    ViewMenuWaitstaff caller;
     List<MenuItem> order;
-    float ordertotal;
+    int tableid;
 
-    SubmitOrderAsync(ViewMenu context, List<MenuItem> order, float ordertotal) {
+    SubmitOrderWaitstaffAsync(ViewMenuWaitstaff context, int tableid, List<MenuItem> order) {
         caller = context;
         this.order = order;
-        this.ordertotal = ordertotal;
+        this.tableid = tableid;
     }
-
 
     @Override
     protected String doInBackground(Pair<Context, String>... params) {
 
         // Check for success tag
-        int success;
         String orderstring = "";
         HttpURLConnection dbConnection = null;
         StringBuilder result = new StringBuilder();
@@ -67,7 +65,7 @@ class SubmitOrderAsync extends AsyncTask<Pair<Context, String>, Void, String> {
 
         // connect to url
         try {
-            url = new URL(urlstring + "?orderstring=" + orderstring + "&status=unclaimed" + "&date=" + formattedDate + "&tableid=1" + "&billstatus=unpaid" + "&price=" + ordertotal);
+            url = new URL(urlstring + "?orderstring=" + orderstring + "&status=unclaimed" + "&date=" + formattedDate + "&tableid=" + tableid);
             System.out.println(url);
             dbConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {

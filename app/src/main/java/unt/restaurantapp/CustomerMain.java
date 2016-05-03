@@ -1,31 +1,23 @@
 package unt.restaurantapp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.SharedPreferencesCompat;
-import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.*;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class CustomerMain extends AppCompatActivity {
 
     String username;
     private int timesPlayed = 0;
-    String MY_PREFS_NAME = "restaurant_app_shared_preferences";
     private Menu menu;
     Button loginButton;
-    int TABLE_ID = 2;
+    String MY_PREFS_NAME = "restaurant_app_shared_preferences";
+    int TABLE_ID = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,12 +112,12 @@ public class CustomerMain extends AppCompatActivity {
         }
 
         if (item.getItemId() == R.id.action_refill) {
-            new TableStatusAsync(TABLE_ID, "refill").execute();
+            new SetTableStatusAsync(TABLE_ID, "Needs refill").execute();
             Toast.makeText(getBaseContext(), "Request sent!", Toast.LENGTH_SHORT).show();
         }
 
         if (item.getItemId() == R.id.action_Help) {
-            new TableStatusAsync(TABLE_ID, "help").execute();
+            new SetTableStatusAsync(TABLE_ID, "Needs help").execute();
             Toast.makeText(getBaseContext(), "Request sent!", Toast.LENGTH_SHORT).show();
         }
 

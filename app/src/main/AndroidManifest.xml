@@ -28,23 +28,28 @@
         <activity
             android:name=".CustomerMain"
             android:label="@string/title_activity_customer_main"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".WaitstaffMain"
             android:label="@string/title_activity_waitstaff_main"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".KitchenMain"
             android:label="@string/title_activity_kitchen_main"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ManagerMain"
             android:label="@string/title_activity_manager_main"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".GamesMain"
             android:label="@string/title_activity_games_main"
             android:parentActivityName=".CustomerMain"
+            android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -54,6 +59,7 @@
             android:name=".HelpMain"
             android:label="@string/title_activity_help_main"
             android:parentActivityName=".CustomerMain"
+            android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -63,11 +69,19 @@
             android:name=".ViewMenu"
             android:label="@string/title_activity_view_menu"
             android:parentActivityName=".CustomerMain"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".RegisterLoginActivity"
+            android:name=".ViewMenuWaitstaff"
+            android:label="@string/title_activity_view_menu"
+            android:parentActivityName=".EditTableActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RegisterUserActivity"
             android:label="@string/title_activity_register_login"
             android:parentActivityName=".CustomerMain"
+            android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -77,6 +91,7 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_register_login"
             android:parentActivityName=".CustomerMain"
+            android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -87,9 +102,50 @@
             android:name=".GameLinks"
             android:label="@string/title_activity_game_links"
             android:parentActivityName=".CustomerMain"
+            android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
+                android:value="unt.restaurantapp.CustomerMain" />
+        </activity>
+        <activity
+            android:name=".ViewTablesActivity"
+            android:label="@string/title_activity_view_tables"
+            android:parentActivityName=".WaitstaffMain"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="unt.restaurantapp.WaitstaffMain" />
+        </activity>
+        <activity
+            android:name=".EditTableActivity"
+            android:label="@string/title_activity_edit_table"
+            android:parentActivityName=".ViewTablesActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="unt.restaurantapp.ViewTablesActivity" />
+        </activity>
+        <activity
+            android:name=".AdjustBillActivity"
+            android:label="@string/title_activity_adjust_bill"
+            android:parentActivityName=".EditTableActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="unt.restaurantapp.EditTableActivity" />
+        </activity>
+        <activity
+            android:name=".ViewOrdersActivity"
+            android:label="@string/title_activity_view_orders"
+            android:parentActivityName=".KitchenMain"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="unt.restaurantapp.KitchenMain" />
                 android:value="unt.restaurantapp.CustomerMain"/>
         </activity>
         <activity android:name=".ManagerMenuView">

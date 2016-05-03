@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v4.util.Pair;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -17,39 +16,33 @@ import java.net.URL;
 /**
  * Created by coltonwood on 4/11/16.
  */
-class TableStatusAsync extends AsyncTask<Pair<Context, String>, Void, String> {
-    String status;
-    int tableid;
+class GetTableStatusAsync extends AsyncTask<Pair<Context, String>, Void, String> {
+    //private String urlstring = "http://10.0.2.2/webservice/gettablestatus.php";
 
-    private String urlstring = "http://10.0.3.2/webservice/changetablestatus.php";
+    DynamicIP ip = new DynamicIP();
+    private String urlstring = "http://" + ip.getIP() + "/webservice/gettablestatus.php";
+
     URL url;
-    RegisterLoginActivity caller;
+    ViewTablesActivity caller;
 
-    TableStatusAsync(int tableid, String status) {
-        this.tableid = tableid;
-        this.status = status;
+    GetTableStatusAsync(ViewTablesActivity context) {
+        caller = context;
     }
 
     @Override
     protected String doInBackground(Pair<Context, String>... params) {
-
-        // Check for success tag
-        HttpURLConnection dbConnection = null;
         StringBuilder result = new StringBuilder();
+        HttpURLConnection dbConnection = null;
 
-        Log.d("request!", "starting");
 
         // connect to url
         try {
-            System.out.println(urlstring + "?tableid=" + tableid + "+&status=" + status);
-            url = new URL(urlstring + "?tableid=" + tableid + "+&status=" + status);
-            System.out.println(url);
+            url = new URL(urlstring);
             dbConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {
             e.printStackTrace();
             Log.d("error::", "error connecting to url");
         }
-
 
         try {
             // pull data from url
@@ -65,16 +58,17 @@ class TableStatusAsync extends AsyncTask<Pair<Context, String>, Void, String> {
         } catch (IOException e) {
             e.printStackTrace();
             Log.d("error::", "error building json string");
-        } finally {
+        }
+        finally {
             dbConnection.disconnect();
         }
 
+        // return the json string
         return result.toString();
     }
 
-
     @Override
     protected void onPostExecute(String result) {
-        System.out.println(result);
+        caller.parseData(result);
     }
 }

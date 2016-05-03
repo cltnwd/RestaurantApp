@@ -2,10 +2,8 @@ package unt.restaurantapp;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.SystemClock;
 import android.support.v4.util.Pair;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -18,16 +16,15 @@ import java.net.URL;
 /**
  * Created by coltonwood on 4/11/16.
  */
-class GetMenuAsync extends AsyncTask<Pair<Context, String>, Void, String> {
-
-    //private String urlstring = "http://10.0.2.2/webservice/viewmenu.php";
-    DynamicIP ip = new DynamicIP();
-    private String urlstring = "http://" + ip.getIP() + "/webservice/viewmenu.php";
+class GetBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
+    private String urlstring = "http://10.0.2.2/webservice/getbill.php";
     URL url;
-    ViewMenu caller;
+    EditTableActivity caller;
+    int tableid;
 
-    GetMenuAsync(ViewMenu context) {
+    GetBillAsync(EditTableActivity context, int tableid) {
         caller = context;
+        this.tableid = tableid;
     }
 
     @Override
@@ -37,7 +34,9 @@ class GetMenuAsync extends AsyncTask<Pair<Context, String>, Void, String> {
 
         // connect to url
         try {
+            urlstring = urlstring + "?tableid=" + tableid;
             url = new URL(urlstring);
+            System.out.println(urlstring);
             dbConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {
             e.printStackTrace();
@@ -69,7 +68,6 @@ class GetMenuAsync extends AsyncTask<Pair<Context, String>, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        System.out.println(result);
-        caller.parseData(result);
+        caller.editBill(result);
     }
 }

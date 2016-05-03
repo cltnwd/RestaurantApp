@@ -12,6 +12,10 @@
     <string name="already_logged_in"><u>Already registered? Tap here to log in!</u></string>
     <string name="return_to_register"><u>New user? Tap here to register!</u></string>
     <string name="title_activity_game_links">GameLinks</string>
+    <string name="title_activity_view_tables">ViewTables</string>
+    <string name="title_activity_edit_table">Table</string>
+    <string name="title_activity_adjust_bill">Adjust Bill</string>
+    <string name="title_activity_view_orders">Order Feed</string>
     <string name="title_activity_manager_login">Manager Sign in</string>
 
     <!-- Strings related to login -->
