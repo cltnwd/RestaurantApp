@@ -19,7 +19,7 @@ import java.net.URL;
  */
 public class GetUsersAsync extends AsyncTask<Pair<Context, String>, Void, String>
 {
-    DynamicIP ip = new DynamicIP();
+    StaticIP ip = new StaticIP();
     private String urlstring = "http://" + ip.getIP() + "/webservice/viewCustomers.php";
     URL url;
     ViewUsers caller;
