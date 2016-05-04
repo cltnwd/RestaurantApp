@@ -13,30 +13,51 @@
     tools:showIn="@layout/activity_manager_main"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/managerManagetables"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Manage Tables"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/managerViewStats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View Stats"/>
+        <Button
+            android:id="@+id/managerManagetables"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Manage Tables"/>
 
-    <Button
-        android:id="@+id/managerViewMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View Menu"
-        android:onClick="manageMenu"/>
+        <Button
+            android:id="@+id/managerViewStats"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="View Stats"/>
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/managerViewUsers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View Users"
-        android:onClick="manageUsers"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/managerViewMenu"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="View Menu"
+            android:onClick="manageMenu"/>
+
+        <Button
+            android:id="@+id/managerViewUsers"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="View Users"
+            android:onClick="manageUsers"/>
+    </LinearLayout>
+
+
+
 
 </LinearLayout>
