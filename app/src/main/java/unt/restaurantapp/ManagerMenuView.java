@@ -27,10 +27,6 @@ import java.util.Objects;
 public class ManagerMenuView extends AppCompatActivity
 {
     ListView menulistview;
-    TextView orderTotalView;
-   // CardView expandableCardView;
-    //float ordertotal=0;
-    ArrayList<MenuItem> currentOrder;
 
     List<MenuItem> entreelist = new ArrayList<>();
     List<MenuItem> appetizerlist = new ArrayList<>();
@@ -42,33 +38,12 @@ public class ManagerMenuView extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_menu_view);
-       /* Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Menu");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
-
-        //currentOrder = new ArrayList<>();
-
-        //orderTotalView = (TextView)findViewById(R.id.orderTotal);
-       // expandableCardView = (CardView)findViewById(R.id.expandableOrder);
 
         menulistview = (ListView)findViewById(R.id.menulistview);
 
         // pull current menu from database
         new ManagerGetMenuAsync(this).execute();
 
-
-        /*expandableCardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (expandableCardView.getMinimumHeight() < 600) {
-                    expandableCardView.setMinimumHeight(600);
-                }
-                else {
-                    expandableCardView.setMinimumHeight(56);
-                }
-            }
-        });*/
     }
 
     // parse string into json object

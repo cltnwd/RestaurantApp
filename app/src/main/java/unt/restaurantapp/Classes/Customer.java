@@ -24,9 +24,9 @@ public class Customer extends User
         return myRewardPoints;
     }
 
-    public void addPoint()
+    public void setMyRewardPoints(int myRewardPoints)
     {
-        this.myRewardPoints = this.myRewardPoints + 1;
+        this.myRewardPoints = myRewardPoints;
     }
 
     public int getMyCoupons()

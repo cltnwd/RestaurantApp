@@ -16,6 +16,7 @@ public class GamesMain extends AppCompatActivity {
     private int win1 = rand.nextInt(10) + 1;
     private int win2 = win1;
     private boolean clicked = false;
+    private int code = rand.nextInt(10000)+1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

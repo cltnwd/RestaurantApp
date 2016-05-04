@@ -6,6 +6,6 @@ package unt.restaurantapp;
 public class DynamicIP {
 
     public String getIP() {
-        return "10.125.205.218";
+        return "10.0.3.2";
     }
 }
