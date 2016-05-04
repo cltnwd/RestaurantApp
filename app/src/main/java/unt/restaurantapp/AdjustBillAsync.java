@@ -21,7 +21,7 @@ class AdjustBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
     int tableid;
 
     //private String urlstring = "http://10.0.2.2/webservice/adjustbill.php";
-    DynamicIP ip = new DynamicIP();
+    StaticIP ip = new StaticIP();
     private String urlstring = "http://" + ip.getIP() + "/webservice/adjustbill.php";
     URL url;
     RegisterUserActivity caller;
@@ -50,7 +50,6 @@ class AdjustBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
             e.printStackTrace();
             Log.d("error::", "error connecting to url");
         }
-
 
         try {
             // pull data from url

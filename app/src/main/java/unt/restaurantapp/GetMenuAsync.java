@@ -2,10 +2,8 @@ package unt.restaurantapp;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.SystemClock;
 import android.support.v4.util.Pair;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -21,7 +19,7 @@ import java.net.URL;
 class GetMenuAsync extends AsyncTask<Pair<Context, String>, Void, String> {
 
     //private String urlstring = "http://10.0.2.2/webservice/viewmenu.php";
-    DynamicIP ip = new DynamicIP();
+    StaticIP ip = new StaticIP();
     private String urlstring = "http://" + ip.getIP() + "/webservice/viewmenu.php";
     URL url;
     ViewMenu caller;

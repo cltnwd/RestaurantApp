@@ -21,17 +21,19 @@ import java.util.List;
  */
 class SubmitOrderWaitstaffAsync extends AsyncTask<Pair<Context, String>, Void, String> {
     //private String urlstring = "http://10.0.2.2/webservice/submitorderwait.php";
-    DynamicIP ip = new DynamicIP();
+    StaticIP ip = new StaticIP();
     private String urlstring = "http://" + ip.getIP() + "/webservice/submitorderwait.php";
     URL url;
     ViewMenuWaitstaff caller;
     List<MenuItem> order;
     int tableid;
+    float ordertotal;
 
-    SubmitOrderWaitstaffAsync(ViewMenuWaitstaff context, int tableid, List<MenuItem> order) {
+    SubmitOrderWaitstaffAsync(ViewMenuWaitstaff context, int tableid, List<MenuItem> order, float ordertotal) {
         caller = context;
         this.order = order;
         this.tableid = tableid;
+        this.ordertotal = ordertotal;
     }
 
     @Override
@@ -65,7 +67,7 @@ class SubmitOrderWaitstaffAsync extends AsyncTask<Pair<Context, String>, Void, S
 
         // connect to url
         try {
-            url = new URL(urlstring + "?orderstring=" + orderstring + "&status=unclaimed" + "&date=" + formattedDate + "&tableid=" + tableid);
+            url = new URL(urlstring + "?orderstring=" + orderstring + "&price=" + ordertotal + "&status=unclaimed" + "&billstatus=unpaid" + "&date=" + formattedDate + "&tableid=" + tableid);
             System.out.println(url);
             dbConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {

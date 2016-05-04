@@ -19,7 +19,7 @@ import java.net.URL;
 class GetTableStatusAsync extends AsyncTask<Pair<Context, String>, Void, String> {
     //private String urlstring = "http://10.0.2.2/webservice/gettablestatus.php";
 
-    DynamicIP ip = new DynamicIP();
+    StaticIP ip = new StaticIP();
     private String urlstring = "http://" + ip.getIP() + "/webservice/gettablestatus.php";
 
     URL url;

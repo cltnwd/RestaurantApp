@@ -139,7 +139,7 @@ public class ViewMenu extends AppCompatActivity {
                     item.setItemid(itemid);
 
                     // show item if it is available
-                    if (jsonitems.getJSONObject(0).optInt("isavailable") == 1) {
+                    if (jsonitems.getJSONObject(i).optInt("isavailable") == 1) {
                         entreelist.add(item);
                     }
 
@@ -174,7 +174,7 @@ public class ViewMenu extends AppCompatActivity {
                     item.setItemid(itemid);
 
                     // show item if it is available
-                    if (jsonitems.getJSONObject(0).optInt("isavailable") == 1) {
+                    if (jsonitems.getJSONObject(i).optInt("isavailable") == 1) {
                         appetizerlist.add(item);
                     }
 
@@ -208,7 +208,7 @@ public class ViewMenu extends AppCompatActivity {
                     item.setItemid(itemid);
 
                     // show item if it is available
-                    if (jsonitems.getJSONObject(0).optInt("isavailable") == 1) {
+                    if (jsonitems.getJSONObject(i).optInt("isavailable") == 1) {
                         dessertlist.add(item);
                     }
 
@@ -243,7 +243,7 @@ public class ViewMenu extends AppCompatActivity {
                     item.setItemid(itemid);
 
                     // show item if it is available
-                    if (jsonitems.getJSONObject(0).optInt("isavailable") == 1) {
+                    if (jsonitems.getJSONObject(i).optInt("isavailable") == 1) {
                         drinklist.add(item);
                     }
 
@@ -428,12 +428,12 @@ public class ViewMenu extends AppCompatActivity {
         }
 
         if (item.getItemId() == R.id.action_refill) {
-            new SetTableStatusAsync(TABLE_ID, "Needs refill").execute();
+            new SetTableStatusAsync(TABLE_ID, "Refill").execute();
             Toast.makeText(getBaseContext(), "Request sent!", Toast.LENGTH_SHORT).show();
         }
 
         if (item.getItemId() == R.id.action_Help) {
-            new SetTableStatusAsync(TABLE_ID, "Needs help").execute();
+            new SetTableStatusAsync(TABLE_ID, "Help").execute();
             Toast.makeText(getBaseContext(), "Request sent!", Toast.LENGTH_SHORT).show();
         }
 

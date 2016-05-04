@@ -43,5 +43,11 @@
         android:layout_height="wrap_content"
         android:text="Register/Log in"
         android:onClick="registerLogin"/>
+    <Button
+        android:id="@+id/checkout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Checkout"
+        android:onClick="checkoutBtn"/>
 
 </LinearLayout>

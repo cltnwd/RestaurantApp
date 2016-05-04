@@ -17,7 +17,8 @@ import java.net.URL;
  * Created by coltonwood on 4/11/16.
  */
 class GetBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
-    private String urlstring = "http://10.0.2.2/webservice/getbill.php";
+    StaticIP ip = new StaticIP();
+    private String urlstring = "http://"+ ip.getIP() + "/webservice/getbill.php";
     URL url;
     EditTableActivity caller;
     int tableid;

@@ -12,6 +12,7 @@ public class MenuItem {
     public double price;
     public int calories;
     int itemid;
+    boolean isAvailable;
 
     String getName() {
         return name;
@@ -32,6 +33,10 @@ public class MenuItem {
         return calories;
     }
 
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
     void setName(String s) {
         name = s;
     }
@@ -49,5 +54,9 @@ public class MenuItem {
     }
     void setItemid(int i) {
         itemid = i;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
     }
 }

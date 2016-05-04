@@ -22,7 +22,8 @@ public class LoginManagerAsync extends AsyncTask<Pair<Context, String>, Void, St
 {
     String fname, lname, username, email, password;
 
-    private String urlstring = "http://10.0.3.2/webservice/ManagerLogin.php";
+    StaticIP ip = new StaticIP();
+    private String urlstring = "http://"+ ip.getIP() + "/webservice/ManagerLogin.php";
     URL url;
     ManagerLoginActivity caller;
 

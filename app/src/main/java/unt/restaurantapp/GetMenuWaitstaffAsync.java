@@ -20,7 +20,7 @@ class GetMenuWaitstaffAsync extends AsyncTask<Pair<Context, String>, Void, Strin
 
     //private String urlstring = "http://10.0.2.2/webservice/viewmenu.php";
 
-    DynamicIP ip = new DynamicIP();
+    StaticIP ip = new StaticIP();
     private String urlstring = "http://" + ip.getIP() + "/webservice/viewmenu.php";
     URL url;
     ViewMenuWaitstaff caller;

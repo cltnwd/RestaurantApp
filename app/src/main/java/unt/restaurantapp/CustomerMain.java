@@ -10,6 +10,9 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class CustomerMain extends AppCompatActivity {
 
     String username;
@@ -46,9 +49,9 @@ public class CustomerMain extends AppCompatActivity {
 
         // reading from shared prefs
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        String currentUsername = prefs.getString("username", null);
-        if (currentUsername != null) {
-            getSupportActionBar().setTitle("Welcome, " + currentUsername + "!");
+        String currentFname = prefs.getString("fname", null);
+        if (prefs.getBoolean("isLoggedIn", false)) {
+            getSupportActionBar().setTitle("Welcome, " + currentFname + "!");
             loginButton.setEnabled(false);
         }
     }
@@ -77,6 +80,40 @@ public class CustomerMain extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void checkoutBtn(View view) {
+        new GetOrderStatusAsync(this, TABLE_ID).execute();
+        System.out.println("test");
+    }
+
+    public void parseData(String jsonString) {
+
+        // create json object from results
+        JSONObject jsonroot = null;
+        try {
+            jsonroot = new JSONObject(jsonString);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        if (jsonroot != null) {
+            if (jsonroot.optInt("success") == 1) {
+                checkout();
+            } else {
+                System.out.println("here");
+                Toast.makeText(this, jsonroot.optString("message"), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+            Toast.makeText(this, "JSON parse error", Toast.LENGTH_SHORT).show();
+    }
+
+    public void checkout() {
+        Intent intent = new Intent(this, CheckoutCustomerActivity.class);
+        intent.putExtra("tableid", TABLE_ID);
+        startActivity(intent);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -99,6 +136,7 @@ public class CustomerMain extends AppCompatActivity {
                 // clear preferences
                 SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
                 editor.putString("username", null);
+                editor.putString("fname", null);
                 editor.putBoolean("isLoggedIn", false);
                 editor.apply();
 
@@ -112,12 +150,12 @@ public class CustomerMain extends AppCompatActivity {
         }
 
         if (item.getItemId() == R.id.action_refill) {
-            new SetTableStatusAsync(TABLE_ID, "Needs refill").execute();
+            new SetTableStatusAsync(TABLE_ID, "Refill").execute();
             Toast.makeText(getBaseContext(), "Request sent!", Toast.LENGTH_SHORT).show();
         }
 
         if (item.getItemId() == R.id.action_Help) {
-            new SetTableStatusAsync(TABLE_ID, "Needs help").execute();
+            new SetTableStatusAsync(TABLE_ID, "Help").execute();
             Toast.makeText(getBaseContext(), "Request sent!", Toast.LENGTH_SHORT).show();
         }
 
