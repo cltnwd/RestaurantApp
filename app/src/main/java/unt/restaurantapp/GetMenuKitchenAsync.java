@@ -16,15 +16,15 @@ import java.net.URL;
 /**
  * Created by coltonwood on 4/11/16.
  */
-class GetMenuAsync extends AsyncTask<Pair<Context, String>, Void, String> {
+class GetMenuKitchenAsync extends AsyncTask<Pair<Context, String>, Void, String> {
 
     //private String urlstring = "http://10.0.2.2/webservice/viewmenu.php";
     StaticIP ip = new StaticIP();
     private String urlstring = "http://" + ip.getIP() + "/webservice/viewmenu.php";
     URL url;
-    ViewMenu caller;
+    EditMenu caller;
 
-    GetMenuAsync(ViewMenu context) {
+    GetMenuKitchenAsync(EditMenu context) {
         caller = context;
     }
 

@@ -43,6 +43,7 @@ public class ViewOrdersActivity extends AppCompatActivity {
     }
 
     public void refreshOrders() {
+        orders.clear();
         new GetOrdersAsync(this).execute();
     }
 

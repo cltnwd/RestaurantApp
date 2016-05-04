@@ -19,7 +19,7 @@ import java.net.URL;
 class GetOrdersAsync extends AsyncTask<Pair<Context, String>, Void, String> {
 
     //private String urlstring = "http://10.0.2.2/webservice/viewmenu.php";
-    DynamicIP ip = new DynamicIP();
+    StaticIP ip = new StaticIP();
     private String urlstring = "http://" + ip.getIP() + "/webservice/vieworders.php";
     URL url;
     ViewOrdersActivity caller;

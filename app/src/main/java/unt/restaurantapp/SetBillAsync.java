@@ -1,11 +1,9 @@
 package unt.restaurantapp;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.util.Pair;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -23,7 +21,7 @@ class SetBillAsync extends AsyncTask<Pair<Context, String>, Void, String> {
     int tableid;
 
     //private String urlstring = "http://10.0.2.2/webservice/setbill.php";
-    DynamicIP ip = new DynamicIP();
+    StaticIP ip = new StaticIP();
     private String urlstring = "http://" + ip.getIP() + "/webservice/setbill.php";
     URL url;
 

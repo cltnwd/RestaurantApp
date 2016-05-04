@@ -143,7 +143,7 @@ public class ViewMenuWaitstaff extends AppCompatActivity {
                     item.setItemid(itemid);
 
                     // show item if it is available
-                    if (jsonitems.getJSONObject(0).optInt("isavailable") == 1) {
+                    if (jsonitems.getJSONObject(i).optInt("isavailable") == 1) {
                         entreelist.add(item);
                     }
 
@@ -178,7 +178,7 @@ public class ViewMenuWaitstaff extends AppCompatActivity {
                     item.setItemid(itemid);
 
                     // show item if it is available
-                    if (jsonitems.getJSONObject(0).optInt("isavailable") == 1) {
+                    if (jsonitems.getJSONObject(i).optInt("isavailable") == 1) {
                         appetizerlist.add(item);
                     }
 
@@ -212,7 +212,7 @@ public class ViewMenuWaitstaff extends AppCompatActivity {
                     item.setItemid(itemid);
 
                     // show item if it is available
-                    if (jsonitems.getJSONObject(0).optInt("isavailable") == 1) {
+                    if (jsonitems.getJSONObject(i).optInt("isavailable") == 1) {
                         dessertlist.add(item);
                     }
 
@@ -247,7 +247,7 @@ public class ViewMenuWaitstaff extends AppCompatActivity {
                     item.setItemid(itemid);
 
                     // show item if it is available
-                    if (jsonitems.getJSONObject(0).optInt("isavailable") == 1) {
+                    if (jsonitems.getJSONObject(i).optInt("isavailable") == 1) {
                         drinklist.add(item);
                     }
 

@@ -20,7 +20,7 @@ class RegisterUserAsync extends AsyncTask<Pair<Context, String>, Void, String> {
     String fname, lname, username, email, password;
 
     //private String urlstring = "http://10.0.2.2/webservice/register.php";
-    DynamicIP ip = new DynamicIP();
+    StaticIP ip = new StaticIP();
     private String urlstring = "http://" + ip.getIP() + "/webservice/register.php";
     URL url;
     RegisterUserActivity caller;

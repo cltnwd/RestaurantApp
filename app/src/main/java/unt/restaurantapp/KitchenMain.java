@@ -34,6 +34,7 @@ public class KitchenMain extends AppCompatActivity {
     }
 
     public void editMenu(View view) {
-
+        Intent intent = new Intent(this, EditMenu.class);
+        startActivity(intent);
     }
 }

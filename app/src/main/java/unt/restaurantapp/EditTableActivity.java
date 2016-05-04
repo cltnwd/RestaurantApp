@@ -1,6 +1,7 @@
 package unt.restaurantapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.design.widget.FloatingActionButton;
@@ -20,6 +21,8 @@ public class EditTableActivity extends AppCompatActivity {
 
     String tablestatus = "OK", newtablestatus="OK";
     int tableid;
+
+    String MY_PREFS_NAME = "restaurant_app_shared_preferences";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,13 @@ public class EditTableActivity extends AppCompatActivity {
                     newtablestatus = "OK";
                     new SetBillAsync(tableid, 0).execute();
                     new SetBillStatusAsync(tableid, "paid").execute();
+
+                    // clear preferences
+                    SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                    editor.putString("username", null);
+                    editor.putString("fname", null);
+                    editor.putBoolean("isLoggedIn", false);
+                    editor.apply();
                 }
 
         }

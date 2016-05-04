@@ -21,7 +21,7 @@ import java.util.List;
  */
 class SubmitOrderWaitstaffAsync extends AsyncTask<Pair<Context, String>, Void, String> {
     //private String urlstring = "http://10.0.2.2/webservice/submitorderwait.php";
-    DynamicIP ip = new DynamicIP();
+    StaticIP ip = new StaticIP();
     private String urlstring = "http://" + ip.getIP() + "/webservice/submitorderwait.php";
     URL url;
     ViewMenuWaitstaff caller;

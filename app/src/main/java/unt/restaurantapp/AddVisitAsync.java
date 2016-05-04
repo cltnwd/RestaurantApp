@@ -21,7 +21,7 @@ class AddVisitAsync extends AsyncTask<Pair<Context, String>, Void, String> {
     String username;
 
     //private String urlstring = "http://10.0.2.2/webservice/setbill.php";
-    DynamicIP ip = new DynamicIP();
+    StaticIP ip = new StaticIP();
     private String urlstring = "http://" + ip.getIP() + "/webservice/addvisit.php";
     URL url;
 

@@ -89,7 +89,8 @@ public class RegisterUserActivity extends AppCompatActivity {
 
                 // log user in, store fname
                 SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                editor.putString("username", fnameET.getText().toString());
+                editor.putString("username", usernameET.getText().toString());
+                editor.putString("fname", fnameET.getText().toString());
                 editor.putBoolean("isLoggedIn", true);
                 editor.apply();
 
