@@ -60,13 +60,6 @@ public class ViewUsers extends AppCompatActivity
             // get the photo objects
             jsonCus = jsonroot.optJSONArray("posts");
 
-            // get the names of the items
-            String items = " ";
-            for (int i = 0; i < jsonCus.length(); i++)
-            {
-                items += jsonCus.getJSONObject(i).optString("username");
-                items += " ";
-            }
 
             // print items
             //Toast.makeText(this, items, Toast.LENGTH_LONG).show();

@@ -120,6 +120,16 @@
                 android:value="unt.restaurantapp.WaitstaffMain"/>
         </activity>
         <activity
+            android:name=".ManageTablesActivity"
+            android:label="@string/title_activity_view_tables"
+            android:parentActivityName=".ManagerMain"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="unt.restaurantapp.ManagerMain" />
+        </activity>
+        <activity
             android:name=".EditTableActivity"
             android:label="@string/title_activity_edit_table"
             android:parentActivityName=".ViewTablesActivity"
