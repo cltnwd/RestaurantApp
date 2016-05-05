@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="unt.restaurantapp">
+<manifest package="unt.restaurantapp"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_PROFILE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <application
         android:allowBackup="true"
@@ -21,31 +21,31 @@
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
             android:name=".CustomerMain"
             android:label="@string/title_activity_customer_main"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".WaitstaffMain"
             android:label="@string/title_activity_waitstaff_main"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".KitchenMain"
             android:label="@string/title_activity_kitchen_main"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ManagerMain"
             android:label="@string/title_activity_manager_main"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".GamesMain"
             android:label="@string/title_activity_games_main"
@@ -54,7 +54,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="unt.restaurantapp.CustomerMain" />
+                android:value="unt.restaurantapp.CustomerMain"/>
         </activity>
         <activity
             android:name=".HelpMain"
@@ -64,20 +64,20 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="unt.restaurantapp.CustomerMain" />
+                android:value="unt.restaurantapp.CustomerMain"/>
         </activity>
         <activity
             android:name=".ViewMenu"
             android:label="@string/title_activity_view_menu"
             android:parentActivityName=".CustomerMain"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ViewMenuWaitstaff"
             android:label="@string/title_activity_view_menu"
             android:parentActivityName=".EditTableActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".RegisterUserActivity"
             android:label="@string/title_activity_register_login"
@@ -86,7 +86,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="unt.restaurantapp.CustomerMain" />
+                android:value="unt.restaurantapp.CustomerMain"/>
         </activity>
         <activity
             android:name=".LoginActivity"
@@ -96,7 +96,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="unt.restaurantapp.CustomerMain" />
+                android:value="unt.restaurantapp.CustomerMain"/>
         </activity>
         android:theme="@style/AppTheme.NoActionBar"/>
         <activity
@@ -107,7 +107,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="unt.restaurantapp.CustomerMain" />
+                android:value="unt.restaurantapp.CustomerMain"/>
         </activity>
         <activity
             android:name=".ViewTablesActivity"
@@ -117,7 +117,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="unt.restaurantapp.WaitstaffMain" />
+                android:value="unt.restaurantapp.WaitstaffMain"/>
         </activity>
         <activity
             android:name=".EditTableActivity"
@@ -127,7 +127,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="unt.restaurantapp.ViewTablesActivity" />
+                android:value="unt.restaurantapp.ViewTablesActivity"/>
         </activity>
         <activity
             android:name=".AdjustBillActivity"
@@ -137,7 +137,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="unt.restaurantapp.EditTableActivity" />
+                android:value="unt.restaurantapp.EditTableActivity"/>
         </activity>
         <activity
             android:name=".ViewOrdersActivity"
@@ -147,19 +147,19 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="unt.restaurantapp.KitchenMain" />
+                android:value="unt.restaurantapp.KitchenMain"/>
             android:value="unt.restaurantapp.CustomerMain"/>
         </activity>
         <activity
             android:name=".ManagerMenuView"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".ManagerLoginActivity"
             android:label="@string/title_activity_manager_login"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".ViewUsers"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".CheckoutCustomerActivity"
             android:label="@string/title_activity_checkout_customer"
@@ -168,7 +168,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="unt.restaurantapp.CustomerMain" />
+                android:value="unt.restaurantapp.CustomerMain"/>
         </activity>
         <activity
             android:name=".ViewOrderActivity"
@@ -178,7 +178,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="unt.restaurantapp.ViewOrdersActivity" />
+                android:value="unt.restaurantapp.ViewOrdersActivity"/>
         </activity>
         <activity
             android:name=".EditMenu"
@@ -188,7 +188,13 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="unt.restaurantapp.KitchenMain" />
+                android:value="unt.restaurantapp.KitchenMain"/>
+        </activity>
+        <activity
+            android:name=".WaitstaffLoginActivity"
+            android:label="@string/title_activity_waitstaff_login">
+        </activity>
+        <activity android:name=".KitchenLogin">
         </activity>
     </application>
 

@@ -61,11 +61,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else if (view.getId() == R.id.waitstaffloginbtn) {
-            Intent intent = new Intent(this, ViewTablesActivity.class);
+            Intent intent = new Intent(this, WaitstaffLoginActivity.class);
             startActivity(intent);
         }
         else if (view.getId() == R.id.kitchenloginbtn) {
-            Intent intent = new Intent(this, KitchenMain.class);
+            Intent intent = new Intent(this, KitchenLogin.class);
             startActivity(intent);
         }
         else if (view.getId() == R.id.managerloginbtn) {

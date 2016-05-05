@@ -34,4 +34,5 @@
         completions."
     </string>
     <string name="title_activity_edit_menu">Edit Menu</string>
+    <string name="title_activity_waitstaff_login">Sign in</string>
 </resources>
