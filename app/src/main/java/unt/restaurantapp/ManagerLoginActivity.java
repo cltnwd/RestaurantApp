@@ -63,12 +63,14 @@ public class ManagerLoginActivity extends AppCompatActivity
 
                 // save fname of user
                 String fname = root.optString("fname");
+                String username = root.optString("username");
                 System.out.println("FNAME::" + fname);
 
                 // log user in, store fname
                 SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                editor.putString("username", fname);
-                editor.putBoolean("isLoggedIn", true);
+                editor.putString("username_manager", username);
+                editor.putString("fname_manager", fname);
+                editor.putBoolean("isLoggedIn_manager", true);
                 editor.apply();
 
                 // go back to main

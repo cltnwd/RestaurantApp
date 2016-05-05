@@ -24,7 +24,8 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="Manage Tables"/>
+            android:text="Manage Tables"
+            android:onClick="manageTables"/>
 
         <Button
             android:id="@+id/managerViewStats"
