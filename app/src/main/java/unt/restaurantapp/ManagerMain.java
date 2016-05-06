@@ -72,6 +72,7 @@ public class  ManagerMain extends AppCompatActivity {
                 editor.putBoolean("isLoggedIn_manager", false);
                 editor.apply();
 
+
                 // make sure log out was successful
                 if (prefs.getString("username_manager", null) == null) {
                     Toast.makeText(this, "Goodbye!", Toast.LENGTH_SHORT).show();
