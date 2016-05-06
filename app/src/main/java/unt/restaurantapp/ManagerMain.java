@@ -41,6 +41,7 @@ public class  ManagerMain extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     public void manageTables(View view) {
         Intent intent = new Intent(this, ManageTablesActivity.class);
         startActivity(intent);

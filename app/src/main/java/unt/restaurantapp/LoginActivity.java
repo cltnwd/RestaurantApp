@@ -76,6 +76,10 @@ public class LoginActivity extends AppCompatActivity {
                 editor.putBoolean("isLoggedIn", true);
                 editor.apply();
 
+                // add a visit
+                SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+                new AddVisitAsync(prefs.getString("username", null)).execute();
+
                 // go back to customer main
                 Intent intent = new Intent(this, CustomerMain.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

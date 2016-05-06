@@ -162,14 +162,14 @@
         </activity>
         <activity
             android:name=".ManagerMenuView"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".ManagerLoginActivity"
             android:label="@string/title_activity_manager_login"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".ViewUsers"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".CheckoutCustomerActivity"
             android:label="@string/title_activity_checkout_customer"
@@ -200,6 +200,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="unt.restaurantapp.KitchenMain" />
         </activity>
+        <activity
+            android:name=".SurveyActivity"
+            android:label="@string/title_activity_survey"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

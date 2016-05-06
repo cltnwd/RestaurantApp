@@ -82,34 +82,9 @@ public class CheckoutCustomerActivity extends AppCompatActivity {
             Toast.makeText(this, "Missing credit card number", Toast.LENGTH_SHORT).show();
         }
         else {
-            new SetBillStatusAsync(tableid, "paid").execute();
-            new SetBillAsync(tableid, 0).execute();
-            new SetTableStatusAsync(tableid, "OK").execute();
 
-            // get prefs
-            SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-            if (prefs.getString("username", null) == null) {
-                finish();
-            }
-
-            else {
-
-                new AddVisitAsync(prefs.getString("username", null)).execute();
-            }
-
-            // TODO: check amount of visits, apply discount
-
-            if (prefs.getString("username", null) != null) {
-                // clear preferences
-                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                editor.putString("username", null);
-                editor.putString("fname", null);
-                editor.putBoolean("isLoggedIn", false);
-                editor.apply();
-            }
-
-            Intent intent = new Intent(this, CustomerMain.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            Intent intent = new Intent(this, SurveyActivity.class);
+            intent.putExtra("tableid", tableid);
             startActivity(intent);
         }
 
