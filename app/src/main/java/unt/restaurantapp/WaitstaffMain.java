@@ -21,6 +21,7 @@ public class WaitstaffMain extends AppCompatActivity {
 
     public void viewTables(View view) {
         Intent intent = new Intent(this, ViewTablesActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 

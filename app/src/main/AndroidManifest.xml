@@ -204,6 +204,7 @@
         </activity>
         <activity
             android:name=".WaitstaffLoginActivity"
+            android:screenOrientation="landscape"
             android:label="@string/title_activity_waitstaff_login">
         </activity>
         <activity android:name=".KitchenLogin">
@@ -211,6 +212,8 @@
         <activity
             android:name=".SurveyActivity"
             android:label="@string/title_activity_survey"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".ManagerVerifiction">
         </activity>

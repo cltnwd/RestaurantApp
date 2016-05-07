@@ -11,63 +11,136 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="unt.restaurantapp.SurveyActivity"
     tools:showIn="@layout/activity_survey"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:gravity="center_horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Please rate your visit with us today:"
-        android:textColor="@android:color/black"
-        android:layout_marginBottom="16dp"
-        android:textSize="20sp"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:textSize="20sp">
-
-        <RadioButton
-            android:id="@+id/one"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Very satisified"
-            android:textSize="20sp"
-            android:layout_marginRight="8dp"/>
-
-        <RadioButton
-            android:id="@+id/two"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Satisified"
-            android:textSize="20sp"
-            android:layout_marginRight="8dp"/>
-
-        <RadioButton
-            android:id="@+id/three"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Neutral"
-            android:checked="true"
-            android:textSize="20sp"
-            android:layout_marginRight="8dp"/>
-
-        <RadioButton
-            android:id="@+id/four"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Disappointed"
+            android:text="Please rate your visit with us today:"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="16dp"
             android:textSize="20sp"/>
 
-        <RadioButton
-            android:id="@+id/five"
+        <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Very disappointed"
-            android:textSize="20sp"
-            android:layout_marginRight="8dp"/>
+            android:orientation="vertical"
+            android:textSize="20sp">
 
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Very satisified"
+                android:textSize="20sp"
+                android:layout_marginRight="8dp"
+                android:onClick="onRadioButtonClicked"/>
+
+            <RadioButton
+                android:id="@+id/two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Satisified"
+                android:textSize="20sp"
+                android:layout_marginRight="8dp"
+                android:onClick="onRadioButtonClicked"/>
+
+            <RadioButton
+                android:id="@+id/three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Neutral"
+                android:checked="true"
+                android:textSize="20sp"
+                android:layout_marginRight="8dp"
+                android:onClick="onRadioButtonClicked"/>
+
+            <RadioButton
+                android:id="@+id/four"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Disappointed"
+                android:textSize="20sp"
+                android:onClick="onRadioButtonClicked"/>
+
+            <RadioButton
+                android:id="@+id/five"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Very disappointed"
+                android:textSize="20sp"
+                android:layout_marginRight="8dp"
+                android:onClick="onRadioButtonClicked"
+                android:layout_marginBottom="16dp"/>
+
+            <RadioButton
+                android:id="@+id/skip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No answer"
+                android:textSize="20sp"
+                android:layout_marginRight="8dp"
+                android:onClick="onRadioButtonClicked"/>
+
+        </RadioGroup>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How would you like to receive your receipt?"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="16dp"
+            android:textSize="20sp"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:textSize="20sp">
+
+            <RadioButton
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textSize="20sp"
+                android:layout_marginRight="8dp"
+                android:onClick="onRadioButtonClicked2"/>
+
+            <RadioButton
+                android:id="@+id/print"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Print"
+                android:checked="true"
+                android:textSize="20sp"
+                android:layout_marginRight="8dp"
+                android:onClick="onRadioButtonClicked2"/>
+
+            <RadioButton
+                android:id="@+id/none"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="None"
+                android:textSize="20sp"
+                android:onClick="onRadioButtonClicked2"/>
+
+        </RadioGroup>
+
+    </LinearLayout>
 
 </LinearLayout>

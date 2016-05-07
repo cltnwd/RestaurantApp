@@ -9,12 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class SurveyActivity extends AppCompatActivity {
 
     String MY_PREFS_NAME = "restaurant_app_shared_preferences";
 
-    int choice = 3;
+    int choice = 3, receipt = 0;
     int tableid;
 
     @Override
@@ -65,6 +66,7 @@ public class SurveyActivity extends AppCompatActivity {
     }
 
     public void onRadioButtonClicked(View view) {
+
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
 
@@ -98,6 +100,40 @@ public class SurveyActivity extends AppCompatActivity {
             case R.id.five:
                 if (checked) {
                     choice = 5;
+                }
+                break;
+
+            case R.id.skip:
+                if (checked) {
+                    choice = 6;
+                }
+                break;
+        }
+    }
+
+    public void onRadioButtonClicked2(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+
+            case R.id.email:
+                if (checked) {
+                    receipt = 1;
+                    Toast.makeText(getBaseContext(), "This is where you would enter your email", Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case R.id.print:
+                if (checked) {
+                    receipt = 2;
+                }
+                break;
+
+            case R.id.none:
+                if (checked) {
+                    receipt = 3;
                 }
                 break;
 

@@ -113,6 +113,24 @@ public class ViewTablesActivity extends AppCompatActivity {
         // logout
         if (item.getItemId() == R.id.action_Logout) {
             // TODO: logout for waitstaff
+            SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+            if (prefs.getString("username_wait", null) == null) {
+                Toast.makeText(this, "You aren't signed in!", Toast.LENGTH_SHORT).show();
+            }
+
+            else {
+                // clear preferences
+                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                editor.putString("username_wait", null);
+                editor.putString("fname_wait", null);
+                editor.putBoolean("isLoggedIn_wait", false);
+                editor.apply();
+
+                // make sure log out was successful
+                if (prefs.getString("username_wait", null) == null) {
+                    Toast.makeText(this, "Goodbye!", Toast.LENGTH_SHORT).show();
+                }
+            }
         }
 
         // refresh table statuses

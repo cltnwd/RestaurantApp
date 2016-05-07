@@ -55,21 +55,23 @@ public class MainActivity extends AppCompatActivity {
 
     public void loginSubmit(View view) {
 
+        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        Intent intent;
         // log in as different users
         if (view.getId() == R.id.customerloginbtn) {
-            Intent intent = new Intent(this, CustomerMain.class);
+            intent = new Intent(this, CustomerMain.class);
             startActivity(intent);
         }
         else if (view.getId() == R.id.waitstaffloginbtn) {
-            Intent intent = new Intent(this, WaitstaffLoginActivity.class);
+            intent = new Intent(this, WaitstaffLoginActivity.class);
             startActivity(intent);
         }
         else if (view.getId() == R.id.kitchenloginbtn) {
-            Intent intent = new Intent(this, KitchenLogin.class);
+            intent = new Intent(this, KitchenLogin.class);
             startActivity(intent);
         }
         else if (view.getId() == R.id.managerloginbtn) {
-            Intent intent = new Intent(this, ManagerLoginActivity.class);
+            intent = new Intent(this, ManagerLoginActivity.class);
             startActivity(intent);
         }
         else {

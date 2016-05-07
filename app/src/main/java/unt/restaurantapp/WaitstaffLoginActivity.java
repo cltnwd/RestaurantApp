@@ -99,12 +99,14 @@ public class WaitstaffLoginActivity extends AppCompatActivity
 
                 // save fname of user
                 String fname = root.optString("fname");
+                String username = root.optString("username");
                 System.out.println("FNAME::" + fname);
 
                 // log user in, store fname
                 SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                editor.putString("username", fname);
-                editor.putBoolean("isLoggedIn", true);
+                editor.putString("username_wait", username);
+                editor.putString("fname_wait", fname);
+                editor.putBoolean("isLoggedIn_wait", true);
                 editor.apply();
 
                 // go back to main
