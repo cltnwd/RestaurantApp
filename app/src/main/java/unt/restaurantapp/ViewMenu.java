@@ -333,6 +333,7 @@ public class ViewMenu extends AppCompatActivity {
 
             // submit the order in background
             new SubmitOrderAsync(this, currentOrder, ordertotal).execute();
+            new SetTableStatusAsync(TABLE_ID, "ordering").execute();
         }
 
     }
@@ -355,6 +356,8 @@ public class ViewMenu extends AppCompatActivity {
                 editor.putInt("realid", realid);
                 System.out.println("realid:: " + realid);
                 editor.apply();
+
+                new SetTableStatusAsync(TABLE_ID, "Waiting").execute();
 
                 Intent intent = new Intent(ViewMenu.this, CustomerMain.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
