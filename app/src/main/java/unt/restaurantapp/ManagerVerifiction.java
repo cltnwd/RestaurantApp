@@ -1,49 +1,17 @@
 package unt.restaurantapp;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.app.LoaderManager.LoaderCallbacks;
-
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.AsyncTask;
-
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static android.Manifest.permission.READ_CONTACTS;
-
-/**
- * A login screen that offers login via email/password.
- */
-public class WaitstaffLoginActivity extends AppCompatActivity
+public class ManagerVerifiction extends AppCompatActivity
 {
 
     String MY_PREFS_NAME = "restaurant_app_shared_preferences";
@@ -53,14 +21,14 @@ public class WaitstaffLoginActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_waitstaff_login);
+        setContentView(R.layout.activity_manager_verifiction);
 
 
         usernameET = (EditText) findViewById(R.id.username);
         passwordET = (EditText) findViewById(R.id.password);
     }
 
-    public void loginWaiter(View view)
+    public void loginManager(View view)
     {
 
         if (usernameET.getText().toString().isEmpty())
@@ -73,17 +41,11 @@ public class WaitstaffLoginActivity extends AppCompatActivity
         }
         else
         {
-            new WaitstaffLoginAsync(this, usernameET.getText().toString(), passwordET.getText().toString()).execute();
+            new ManagerVerifactionAsync(this, usernameET.getText().toString(), passwordET.getText().toString()).execute();
         }
     }
 
-    public void registerWaiter(View view) {
-        Intent intent = new Intent(this, ManagerVerifiction.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-    }
-
-    public void parseData(String jsonstring)
+    void parseData(String jsonstring)
     {
 
         JSONObject root = null;
@@ -99,18 +61,20 @@ public class WaitstaffLoginActivity extends AppCompatActivity
 
                 // save fname of user
                 String fname = root.optString("fname");
+                String username = root.optString("username");
                 System.out.println("FNAME::" + fname);
 
                 // log user in, store fname
                 SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                editor.putString("username", fname);
-                editor.putBoolean("isLoggedIn", true);
+                editor.putString("username_manager", username);
+                editor.putString("fname_manager", fname);
+                editor.putBoolean("isLoggedIn_manager", true);
                 editor.apply();
 
                 // go back to main
-                Intent intent = new Intent(this, ViewTablesActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                //Intent intent = new Intent(this,RegisterWaitstaff.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                //startActivity(intent);
 
             }
 
@@ -123,4 +87,3 @@ public class WaitstaffLoginActivity extends AppCompatActivity
 
     }
 }
-

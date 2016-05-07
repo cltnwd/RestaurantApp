@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
               xmlns:tools="http://schemas.android.com/tools"
@@ -8,8 +9,32 @@
               android:paddingRight="@dimen/activity_horizontal_margin"
               android:paddingTop="@dimen/activity_vertical_margin"
               app:layout_behavior="@string/appbar_scrolling_view_behavior"
-              tools:showIn="@layout/activity_kitchen_login"
+              tools:context=".RegisterWaitstaff"
+              tools:showIn="@layout/activity_register_waitstaff"
               android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/fname"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="56dp"
+            android:hint="First name..."
+            android:nextFocusForward="@+id/lname"
+            android:nextFocusDown="@+id/lname"/>
+        <EditText
+            android:id="@+id/lname"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="56dp"
+            android:hint="Last name..."
+            android:nextFocusForward="@+id/username"
+            android:nextFocusDown="@+id/username"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,29 +47,41 @@
             android:layout_height="56dp"
             android:hint="Username..."
             android:nextFocusForward="@+id/password"
-            android:nextFocusDown="@+id/password"/>/>
+            android:nextFocusDown="@+id/password"/>
         <EditText
             android:id="@+id/password"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="56dp"
             android:inputType="textPassword"
-            android:hint="Password..."/>
+            android:hint="Password..."
+            android:nextFocusForward="@+id/email"
+            android:nextFocusDown="@+id/email"/>
 
     </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:onClick="loginKitchen"
-        android:id="@+id/button8"/>
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:hint="Email..."/>
+
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register"
         android:onClick="registerChef"
+        android:id="@+id/button8"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:onClick="loginChef"
         android:id="@+id/button10"/>
+
+
 
 </LinearLayout>

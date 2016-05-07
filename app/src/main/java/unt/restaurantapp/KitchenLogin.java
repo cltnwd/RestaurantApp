@@ -44,6 +44,12 @@ public class KitchenLogin extends AppCompatActivity
             new KitchenLoginAsync(this, usernameET.getText().toString(), passwordET.getText().toString()).execute();
         }
     }
+    public void registerChef(View view)
+    {
+        Intent intent = new Intent(this, ManagerCheck.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
 
     public void parseData(String jsonstring)
     {
