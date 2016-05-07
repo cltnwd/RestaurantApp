@@ -31,6 +31,7 @@ public class ViewUsers extends AppCompatActivity
     List<User> customerList = new ArrayList<>();
     List<User> waiterList= new ArrayList<>();
     List<User> managerList= new ArrayList<>();
+    List<User> kitchenList= new ArrayList<>();
     String currentList = "";
 
     @Override
@@ -42,6 +43,8 @@ public class ViewUsers extends AppCompatActivity
 
         new GetUsersAsync(this).execute();
         new GetWaitstaffAsync(this).execute();
+        new GetManagersAsync(this).execute();
+        new GetKitchenAsync(this).execute();
     }
 
     public void parseData(String jsonString, int list)
@@ -111,7 +114,7 @@ public class ViewUsers extends AppCompatActivity
                 }
                 else if(list == 2)
                 {
-                    
+                    kitchenList.add(newUser);
                 }
                 else if(list == 3)
                 {
@@ -119,7 +122,7 @@ public class ViewUsers extends AppCompatActivity
                 }
                 else if(list == 4)
                 {
-                    
+                    managerList.add(newUser);
                 }
 
 
@@ -132,11 +135,11 @@ public class ViewUsers extends AppCompatActivity
 
     public void updateUserList(View view)
     {
-
         UserListAdapter customAdapter;
 
         if (view.getId() == R.id.customerBtn)
         {
+            new GetUsersAsync(this).execute();
             customAdapter = new UserListAdapter(this, R.layout.userlistrow, customerList);
             userListView.setAdapter(customAdapter);
             currentList = "Customer";
@@ -145,12 +148,15 @@ public class ViewUsers extends AppCompatActivity
 
         else if (view.getId() == R.id.managerBtn)
         {
-
-
+            new GetManagersAsync(this).execute();
+            customAdapter = new UserListAdapter(this, R.layout.userlistrow, managerList);
+            userListView.setAdapter(customAdapter);
+            currentList = "Manager";
         }
 
         else if (view.getId() == R.id.waitstaffBtn)
         {
+            new GetWaitstaffAsync(this).execute();
             customAdapter = new UserListAdapter(this, R.layout.userlistrow, waiterList);
             userListView.setAdapter(customAdapter);
             currentList = "Waitstaff";
@@ -159,7 +165,10 @@ public class ViewUsers extends AppCompatActivity
 
         else if (view.getId() == R.id.kitchenBtn)
         {
-
+            new GetKitchenAsync(this).execute();
+            customAdapter = new UserListAdapter(this, R.layout.userlistrow, kitchenList);
+            userListView.setAdapter(customAdapter);
+            currentList = "Kitchen";
 
         }
 

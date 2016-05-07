@@ -127,7 +127,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="unt.restaurantapp.ManagerMain" />
+                android:value="unt.restaurantapp.ManagerMain"/>
         </activity>
         <activity
             android:name=".EditTableActivity"
@@ -171,7 +171,6 @@
         <activity
             android:name=".ViewUsers"
             android:screenOrientation="landscape" />
-        android:screenOrientation="landscape" />
         <activity
             android:name=".CheckoutCustomerActivity"
             android:label="@string/title_activity_checkout_customer"
@@ -216,10 +215,21 @@
             android:name=".ViewStatsActivity"
             android:label="@string/title_activity_view_stats"
             android:parentActivityName=".ManagerMain"
+            android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="unt.restaurantapp.ManagerMain" />
+        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ManagerVerifiction">
+        </activity>
+        <activity android:name=".RegisterWaitstaff">
+        </activity>
+        <activity android:name=".RegisterKitchen">
+        </activity>
+        <activity android:name=".ManagerCheck">
         </activity>
     </application>
 

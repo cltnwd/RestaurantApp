@@ -33,11 +33,17 @@
     </LinearLayout>
 
     <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Login"
+    android:onClick="loginWaiter"
+    android:id="@+id/button8"/>
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:onClick="loginWaiter"
-        android:id="@+id/button8"/>
-
+        android:text="Register"
+        android:onClick="registerWaiter"
+        android:id="@+id/button10"/>
 
 </LinearLayout>

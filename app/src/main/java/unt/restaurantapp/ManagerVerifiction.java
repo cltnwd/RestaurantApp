@@ -11,7 +11,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class KitchenLogin extends AppCompatActivity
+public class ManagerVerifiction extends AppCompatActivity
 {
 
     String MY_PREFS_NAME = "restaurant_app_shared_preferences";
@@ -21,14 +21,14 @@ public class KitchenLogin extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kitchen_login);
+        setContentView(R.layout.activity_manager_verifiction);
 
 
         usernameET = (EditText) findViewById(R.id.username);
         passwordET = (EditText) findViewById(R.id.password);
     }
 
-    public void loginKitchen(View view)
+    public void loginManager(View view)
     {
 
         if (usernameET.getText().toString().isEmpty())
@@ -41,17 +41,11 @@ public class KitchenLogin extends AppCompatActivity
         }
         else
         {
-            new KitchenLoginAsync(this, usernameET.getText().toString(), passwordET.getText().toString()).execute();
+            new ManagerVerifactionAsync(this, usernameET.getText().toString(), passwordET.getText().toString()).execute();
         }
     }
-    public void registerChef(View view)
-    {
-        Intent intent = new Intent(this, ManagerCheck.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-    }
 
-    public void parseData(String jsonstring)
+    void parseData(String jsonstring)
     {
 
         JSONObject root = null;
@@ -67,18 +61,20 @@ public class KitchenLogin extends AppCompatActivity
 
                 // save fname of user
                 String fname = root.optString("fname");
+                String username = root.optString("username");
                 System.out.println("FNAME::" + fname);
 
                 // log user in, store fname
                 SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                editor.putString("username", fname);
-                editor.putBoolean("isLoggedIn", true);
+                editor.putString("username_manager", username);
+                editor.putString("fname_manager", fname);
+                editor.putBoolean("isLoggedIn_manager", true);
                 editor.apply();
 
                 // go back to main
-                Intent intent = new Intent(this, KitchenMain.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                //Intent intent = new Intent(this,RegisterWaitstaff.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                //startActivity(intent);
 
             }
 

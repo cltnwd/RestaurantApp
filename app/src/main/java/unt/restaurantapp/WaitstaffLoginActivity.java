@@ -77,6 +77,12 @@ public class WaitstaffLoginActivity extends AppCompatActivity
         }
     }
 
+    public void registerWaiter(View view) {
+        Intent intent = new Intent(this, ManagerVerifiction.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
     public void parseData(String jsonstring)
     {
 
