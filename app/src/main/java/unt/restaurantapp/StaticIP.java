@@ -6,6 +6,7 @@ package unt.restaurantapp;
 public class StaticIP {
 
     public String getIP() {
-        return "10.0.3.2";
+        //10.0.2.2
+        return "192.168.1.6";
     }
 }
