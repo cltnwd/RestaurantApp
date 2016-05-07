@@ -17,6 +17,7 @@ public class SurveyActivity extends AppCompatActivity {
 
     int choice = 3, receipt = 0;
     int tableid;
+    float price = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +27,15 @@ public class SurveyActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         tableid = getIntent().getIntExtra("tableid", 0);
+        price = getIntent().getFloatExtra("price", 0);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: logout and all that
+
                 new SetBillStatusAsync(tableid, "paid").execute();
-                new SetBillAsync(tableid, 0).execute();
+                //new SetBillAsync(tableid, price).execute();
                 new SetTableStatusAsync(tableid, "OK").execute();
 
                 // get prefs
@@ -47,8 +49,6 @@ public class SurveyActivity extends AppCompatActivity {
                     // idk
                 }
 
-                // TODO: check amount of visits, apply discount
-
                 if (prefs.getString("username", null) != null) {
                     // clear preferences
                     SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
@@ -57,6 +57,9 @@ public class SurveyActivity extends AppCompatActivity {
                     editor.putBoolean("isLoggedIn", false);
                     editor.apply();
                 }
+                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                editor.putInt("realid", -1);
+                editor.apply();
 
                 Intent intent = new Intent(getBaseContext(), CustomerMain.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

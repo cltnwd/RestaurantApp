@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
@@ -23,6 +24,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.prefs.Preferences;
 
 public class ViewMenu extends AppCompatActivity {
 
@@ -342,9 +344,18 @@ public class ViewMenu extends AppCompatActivity {
         JSONArray jsonitems = null;
         try {
             jsonroot = new JSONObject(jsonString);
+            jsonitems = jsonroot.getJSONArray("posts");
 
             if (jsonroot.optInt("success") == 1) {
                 Toast.makeText(getBaseContext(), "Order submitted!", Toast.LENGTH_SHORT).show();
+                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+
+                // get realid
+                int realid = jsonitems.getJSONObject(jsonitems.length()-1).optInt("realid");
+                editor.putInt("realid", realid);
+                System.out.println("realid:: " + realid);
+                editor.apply();
+
                 Intent intent = new Intent(ViewMenu.this, CustomerMain.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

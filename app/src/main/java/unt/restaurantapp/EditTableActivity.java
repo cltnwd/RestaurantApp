@@ -68,7 +68,7 @@ public class EditTableActivity extends AppCompatActivity {
             case R.id.statuspaidradio:
                 if (checked) {
                     newtablestatus = "OK";
-                    new SetBillAsync(tableid, 0).execute();
+                    //new SetBillAsync(tableid, 0).execute();
                     new SetBillStatusAsync(tableid, "paid").execute();
 
                     // clear preferences
@@ -76,6 +76,7 @@ public class EditTableActivity extends AppCompatActivity {
                     editor.putString("username", null);
                     editor.putString("fname", null);
                     editor.putBoolean("isLoggedIn", false);
+                    editor.putInt("realid", -1);
                     editor.apply();
                 }
 

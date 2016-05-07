@@ -23,6 +23,7 @@ public class CheckoutCustomerActivity extends AppCompatActivity {
     EditText ccedittext;
     int tableid;
     boolean gotBill = false;
+    float price=0;
 
     String MY_PREFS_NAME = "restaurant_app_shared_preferences";
 
@@ -45,7 +46,7 @@ public class CheckoutCustomerActivity extends AppCompatActivity {
         // create json object from results
         JSONObject jsonroot = null;
         JSONArray jsonitems = null;
-        float price=0;
+
         try {
             jsonroot = new JSONObject(jsonString);
 
@@ -85,6 +86,7 @@ public class CheckoutCustomerActivity extends AppCompatActivity {
 
             Intent intent = new Intent(this, SurveyActivity.class);
             intent.putExtra("tableid", tableid);
+            intent.putExtra("price", price);
             startActivity(intent);
         }
 
